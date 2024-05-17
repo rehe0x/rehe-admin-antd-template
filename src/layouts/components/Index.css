@@ -1,0 +1,17 @@
+
+.demo-logo{
+    width: 200px;
+    /* color: white; */
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.ant-menu-light.ant-menu-horizontal >.ant-menu-item{
+    margin-inline: 5px;
+}
+
+.ant-layout-sider-children {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
