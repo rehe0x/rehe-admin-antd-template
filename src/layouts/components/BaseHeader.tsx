@@ -1,5 +1,6 @@
 import { Layout, Menu, Space, Dropdown, ConfigProvider, message } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
+import { useNavigate } from "react-router-dom";
 
 import React,{ useState,useContext } from 'react'
 import { AppConfigContext } from "@/stores/ContextProvider";
@@ -8,16 +9,16 @@ import './Index.css'
 
 const items1 = [
   {
-    key:1,
-    label: `中台`
+    key:'/',
+    label: `/`
   },
   {
-    key:2,
-    label: `财务`
+    key:'data',
+    label: `图表`
   },
   {
-    key:344,
-    label: `数据中心`
+    key:'sb',
+    label: `随便`
   }
 ]
 
@@ -75,6 +76,11 @@ const App = () => {
     setTheme(e.key)
     }
 
+  const navigate = useNavigate()
+
+  const onClickLe = (item) => {
+    navigate(item.key)
+  }
   return (
     <Layout.Header
       style={{
@@ -115,6 +121,7 @@ const App = () => {
             borderBottom: 0,
             fontWeight: 'bold'
           }}
+          onClick={onClickLe}
         />
       </ConfigProvider>
 

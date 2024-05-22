@@ -1,11 +1,11 @@
 import React from 'react';
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme, Space, Button, Dropdown, ConfigProvider, } from 'antd';
+import { Layout, Menu, theme, Space, Button, Dropdown, Spin,ConfigProvider, } from 'antd';
 import { DownOutlined, AlignLeftOutlined, BarChartOutlined } from '@ant-design/icons';
 
-import Table from '@/page/user/Table'
-import Select from '@/page/user/Select'
-
+import Table from '@/page/main/user/Table'
+import Select from '@/page/main/user/Select'
+import Breadcrumb from "@/components/Breadcrumb";
 const items = [
   {
     label: <a href="https://www.antgroup.com">1st menu item</a>,
@@ -29,17 +29,10 @@ const App = () => {
   return (
     <>
       <Layout className='home-layout'>
-        <Breadcrumb
-          style={{
-            margin: '16px 0',
-          }}
-          items={[
-            { title: '主题' },
-            { title: '菜单管理' },
-            { title: '子菜单' },
-          ]}
-        />
+        <Breadcrumb  />
 
+    <Spin tip="Loading..." spinning={false}>
+    
         <Layout.Content
           className='layout-content layout-content-margin-bottom'
         >
@@ -108,6 +101,8 @@ const App = () => {
 
           <Table />
         </Layout.Content>
+
+    </Spin>
       </Layout>
     </>
   );

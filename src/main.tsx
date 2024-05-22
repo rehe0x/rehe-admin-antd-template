@@ -1,14 +1,17 @@
 import React, { useReducer } from 'react'
 import ReactDOM from 'react-dom/client'
+import { RouterProvider } from "react-router-dom"
+
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/locale/zh_CN';
 
 import ThemeCustom from "@/styles/ThemeCustom";
 import { AppConfigContext } from "@/stores/ContextProvider.tsx";
 
-import Index from './page/Index.tsx'
 
-export default function MyApp() {
+import { router } from "@/router/index";
+
+const MyApp = () => {
   const themeState = {
     algorithm: ThemeCustom.CustomDefaultAlgorithm,
     componentSize: 'middle'
@@ -49,7 +52,7 @@ export default function MyApp() {
               activeBarHeight: 0,
               activeBarBorderWidth: 0,
               activeBarWidth: 0,
-              itemMarginInline:12
+              // itemMarginInline:12
             }
           },
           cssVar: true
@@ -57,7 +60,7 @@ export default function MyApp() {
         componentSize={state.componentSize}
         locale={zhCN}
       >
-        <Index />
+        <RouterProvider router={router}/>
       </ConfigProvider>
     </AppConfigContext.Provider>
   );

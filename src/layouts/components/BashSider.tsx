@@ -1,6 +1,7 @@
-import React,{useState}from 'react';
+import React,{Children, useState}from 'react';
 import { Layout, Menu, Button, Flex, Tooltip, Typography } from 'antd';
 import { LaptopOutlined, NotificationOutlined, UserOutlined, SearchOutlined, LeftOutlined } from '@ant-design/icons';
+import { useNavigate } from "react-router-dom";
 
 const items3 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
   const key = String(index + 1);
@@ -20,26 +21,40 @@ const items3 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
 
 const items4 = [
   {
-    key: `1231233`,
+    key: ``,
     icon: React.createElement(UserOutlined),
-    label: `首页概括1`
+    label: `Dashboard`
   },
   {
-    key: `123121212312312312312`,
+    key: ``,
     icon: React.createElement(UserOutlined),
-    label: `首页概括2`
+    label: `系统管理`,
+    children: [
+      {
+        key: `user`,
+        // icon: React.createElement(UserOutlined),
+        label: `用户管理`
+      },
+      {
+        key: `menu`,
+        // icon: React.createElement(UserOutlined),
+        label: `菜单管理`
+      },
+    ]
   },
-  {
-    key: `12312335555541231`,
-    icon: React.createElement(UserOutlined),
-    label: `首页概括3`
-  },
+  
 ]
 
 const items2 = [...items4, ...items3]
 
 
 const App = () => {
+  const navigate = useNavigate();
+  const onClick = (item, key, keyPath, domEvent) => {
+    console.log(item)
+    navigate(`/${item.key}`);
+  }
+
   const [collapsed, setCollapsed] = useState(false);
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
@@ -63,12 +78,13 @@ const App = () => {
 
           <Menu
             mode="inline"
-            defaultSelectedKeys={['1231233']}
+            defaultSelectedKeys={['home']}
             style={{
               height: '100%',
               borderRight: 0,
             }}
             items={items2}
+            onClick= {onClick}
           />
         </div>
 

@@ -1,8 +1,9 @@
 import React from 'react';
+import { Outlet } from "react-router-dom"
+
 import { Layout } from 'antd';
 
 import BashSider from "@/layouts/components/BashSider";
-import ListPage from "@/page/user/ListPage";
 
 import './Index.css'
 
@@ -19,7 +20,8 @@ const App = () => {
         zIndex: -10,
 
       }} /> */}
-      <ListPage />
+      {/* <ListPage /> */}
+      <Outlet />
     </Layout>
   );
 };
