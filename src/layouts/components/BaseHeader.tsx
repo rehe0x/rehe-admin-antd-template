@@ -183,7 +183,7 @@ const App = (props) => {
                       verticalAlign: 'middle',
                       display: 'flex'
                     }}
-                    // size={35}
+                    size={35}
                     gap={2}
                   >
                     Lucy
