@@ -23,6 +23,7 @@ const CustomDarkAlgorithm = (seedToken: SeedToken, mapToken: MapToken | undefine
       
         headerBg: 'rgba(20, 20, 20, 0.6)',
         siderBg: '#141414',
+
     }
     //扩展extendToken 
     const extendToken = {
@@ -43,10 +44,12 @@ const CustomDefaultAlgorithm = (seedToken: SeedToken) => {
       
         headerBg: 'rgba(255, 255, 255, 0.6)',
         siderBg: '#ffff',
+
+
     }
     //扩展extendToken 
     const extendToken = {
-        
+
     }
     //使用 antd 默认算法生成基础token
     const baseToken = theme.defaultAlgorithm({...seedToken,...customSendToken,...extendToken});

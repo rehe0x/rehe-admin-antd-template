@@ -1,5 +1,7 @@
 import React, { useReducer } from 'react'
-import { ConfigProvider,MappingAlgorithm } from 'antd';
+import { ConfigProvider,MappingAlgorithm,Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
+
 import zhCN from 'antd/locale/zh_CN';
 import ThemeCustom from "@/theme/index";
 import { AppContext } from "@/stores/AppContext";
@@ -7,7 +9,16 @@ import { AppContext } from "@/stores/AppContext";
 import Router from "@/router/index";
 import storage from "@/common/storage";
 
+// 自定义指示符组件
+const customIndicator = (
+  <LoadingOutlined style={{ fontSize: 36 }} spin />
+);
+// 设置默认指示符
+Spin.setDefaultIndicator(customIndicator);
+
 export const App = () => {
+
+  
   const themeState = {
     algorithm: 'light',
     componentSize: 'middle'
@@ -51,6 +62,7 @@ export const App = () => {
       <ConfigProvider
         theme={{
           token: {
+            colorBgMask: 'rgba(0, 0, 0, 0.02)'
           },
           algorithm: getAlgorithm(state.algorithm),
           components: {

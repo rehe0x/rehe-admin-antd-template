@@ -34,12 +34,12 @@ const App = () => {
       router.routes[0].children = routeTree
       // 跳转对应路由
       router.navigate(`${location.pathname}`, { replace: true });
-      setTimeout(() => {
+      // setTimeout(() => {
         // 设置顶部菜单
         setTopMenuItem(topMenuTree)
         setLoading(false)
         // 适当延迟过度效果
-      }, 300);
+      // }, 0);
     })();
   }, [])
 

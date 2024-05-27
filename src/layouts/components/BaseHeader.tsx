@@ -97,7 +97,7 @@ const App = (props) => {
     NProgress.start();
     window.setTimeout(() => {
       NProgress.done();
-    }, 500);
+    }, 350);
     navigate(item.key)
   }
   

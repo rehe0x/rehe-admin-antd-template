@@ -1,6 +1,7 @@
 import React,{lazy, Suspense} from 'react';
 import { Spin } from "antd";
 import * as icons from '@ant-design/icons';
+import { LoadingOutlined } from '@ant-design/icons';
 
 export const layout_modules = import.meta.glob('@/layouts/*.tsx');
 export const page_modules = import.meta.glob('@/page/**/*.tsx');
@@ -14,15 +15,35 @@ export const pathToLazyComponent  =  (filePaht: string,spin?: boolean) => {
      );
   }
   const Components = lazy(path);
-  if (spin == false){
-    return (
-        <Components />
-    );
-  }
+
+//   // 异步加载的组件
+// const Components = lazy(() => {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve(path);
+//     }, 100000); // 延时3秒
+//   });
+// });
+
+  // if (spin == false){
+  //   return (
+  //       <LazyComponent />
+  //   );
+  // }
   return (
-    <Suspense fallback={<Spin spinning={true} style={{
-      marginTop: '200px'
-    }} size="small" />}>
+    <Suspense fallback={ 
+      <Spin spinning={true} className='lazy-spin'  
+      fullscreen style={{marginTop: '55px'}} 
+      indicator={
+        <LoadingOutlined
+          style={{
+            fontSize: 36,
+            bottom: '100px'
+          }}
+          spin
+        />
+      }
+    />}>
       <Components />
     </Suspense>
   );

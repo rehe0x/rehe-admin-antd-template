@@ -14,10 +14,10 @@ const App = (props) => {
   };
 
   // 加载站位 适当延时
-  const [loading, setLoading] = useState(true)
-  setTimeout(() => {
-    setLoading(false)
-  }, 400);
+  const [loading, setLoading] = useState(false)
+  // setTimeout(() => {
+  //   setLoading(false)
+  // }, 400);
 
 
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const App = (props) => {
     NProgress.start();
     window.setTimeout(() => {
       NProgress.done();
-    }, 400);
+    }, 350);
     navigate(`${item.key}`);
   }
 
