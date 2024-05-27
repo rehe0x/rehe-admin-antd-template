@@ -1,32 +1,15 @@
+import React, { useState, useEffect } from 'react'
+import { useNavigate, useMatches } from "react-router-dom";
+
 import { Layout, Menu, Space, Dropdown, ConfigProvider, message } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
-import { useNavigate } from "react-router-dom";
 
-import React,{ useState,useContext } from 'react'
-import { AppConfigContext } from "@/stores/ContextProvider";
-
+import { useApp } from "@/stores/AppContext";
+import NProgress from '@/components/NProgress';
+import { BaseHeaderSkeleton } from "@/layouts/components/Skeleton";
 import './Index.css'
 
-const items1 = [
-  {
-    key:'/',
-    label: `/`
-  },
-  {
-    key:'data',
-    label: `图表`
-  },
-  {
-    key:'sb',
-    label: `随便`
-  }
-]
-
-const onClick = ({ key }) => {
-  message.info(`Click on item ${key}`);
-};
-
-const items = [
+const themeItems = [
   {
     key: '1',
     type: 'group',
@@ -65,22 +48,61 @@ const items = [
 
 
 
+const centerItems = [
+  {
+    key: '2',
+    type: 'group',
+    label: '@你好',
+    children: [
+      {
+        key: '1',
+        label: '个人信息',
+      },
+      {
+        key: '2',
+        label: '修改密码',
+      },
+      {
+        key: '3',
+        label: '设置',
+      },
+    ],
+  },
+  {
+    key: '33',
+    label: '退出',
+  },
+];
 
-const App = () => {
-   const {
-    setTheme
-  } = useContext(AppConfigContext);
 
+NProgress.start();
+window.setTimeout(() => {
+  NProgress.done();
+}, 500);
+
+const App = (props) => {
+  const { setTheme } = useApp();
   // 修改 context 中的值
-  const handleClickssf = (e) => {
+  const themeClick = (e) => {
     setTheme(e.key)
-    }
+  }
+  // 个人中心
+  const centerClick = ({ key }) => {
+    message.info(`Click on item ${key}`);
+  };
 
+  // 顶部路由跳转
   const navigate = useNavigate()
-
-  const onClickLe = (item) => {
+  const routerClick = (item) => {
+    NProgress.start();
+    window.setTimeout(() => {
+      NProgress.done();
+    }, 500);
     navigate(item.key)
   }
+  
+ const matches = useMatches();
+ const { data,pathname }  = matches.at(-1)
   return (
     <Layout.Header
       style={{
@@ -110,29 +132,32 @@ const App = () => {
           },
         }}
       >
-        <Menu
-          mode="horizontal"
-          defaultSelectedKeys={['1']}
-          items={items1}
-          style={{
-            lineHeight: '36px',
-            flex: 1,
-            minWidth: 0,
-            borderBottom: 0,
-            fontWeight: 'bold'
-          }}
-          onClick={onClickLe}
-        />
+
+        <BaseHeaderSkeleton loading={props.topMenuItem.length === 0}>
+          <Menu
+            mode="horizontal"
+            defaultSelectedKeys={[data?.parentPaths ? data?.parentPaths![0] : null,pathname]}
+            items={props.topMenuItem && props.topMenuItem.length > 0 ? props.topMenuItem : []}
+            style={{
+              lineHeight: '36px',
+              flex: 1,
+              minWidth: 0,
+              borderBottom: 0,
+              fontWeight: 'bold'
+            }}
+            onClick={routerClick}
+          />
+        </BaseHeaderSkeleton>
       </ConfigProvider>
 
       <Space size="large">
-        <Dropdown className="header-select" menu={{ items, onClick: handleClickssf }} placement="bottom" arrow={{ pointAtCenter: true }}>
+        <Dropdown className="header-select" menu={{ items:themeItems, onClick: themeClick }} placement="bottom" arrow={{ pointAtCenter: true }}>
           <a onClick={(e) => e.preventDefault()}>
             主题布局
           </a>
         </Dropdown>
 
-        <Dropdown className="header-select" menu={{ items, onClick }} placement="bottom" arrow={{ pointAtCenter: true }} >
+        <Dropdown className="header-select" menu={{ items:centerItems, onClick: centerClick }} placement="bottom" arrow={{ pointAtCenter: true }} >
           <a onClick={(e) => e.preventDefault()}>
             <Space>
               个人中心

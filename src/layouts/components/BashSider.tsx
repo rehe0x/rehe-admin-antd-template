@@ -1,64 +1,37 @@
-import React,{Children, useState}from 'react';
-import { Layout, Menu, Button, Flex, Tooltip, Typography } from 'antd';
-import { LaptopOutlined, NotificationOutlined, UserOutlined, SearchOutlined, LeftOutlined } from '@ant-design/icons';
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate,useMatches } from "react-router-dom";
+import { Layout, Menu, Button, Tooltip, Typography } from 'antd';
+import { LeftOutlined } from '@ant-design/icons';
+import NProgress from '@/components/NProgress';
+import { BashSiderSkeleton } from "@/layouts/components/Skeleton";
 
-const items3 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
-  const key = String(index + 1);
-  return {
-    key: `sub${key}`,
-    icon: React.createElement(icon),
-    label: `主题菜单${key}`,
-    children: new Array(4).fill(null).map((_, j) => {
-      const subKey = index * 4 + j + 1;
-      return {
-        key: `subKey${subKey}`,
-        label: `则色菜单${subKey}`,
-      };
-    }),
-  };
-});
-
-const items4 = [
-  {
-    key: ``,
-    icon: React.createElement(UserOutlined),
-    label: `Dashboard`
-  },
-  {
-    key: ``,
-    icon: React.createElement(UserOutlined),
-    label: `系统管理`,
-    children: [
-      {
-        key: `user`,
-        // icon: React.createElement(UserOutlined),
-        label: `用户管理`
-      },
-      {
-        key: `menu`,
-        // icon: React.createElement(UserOutlined),
-        label: `菜单管理`
-      },
-    ]
-  },
-  
-]
-
-const items2 = [...items4, ...items3]
-
-
-const App = () => {
-  const navigate = useNavigate();
-  const onClick = (item, key, keyPath, domEvent) => {
-    console.log(item)
-    navigate(`/${item.key}`);
-  }
-
+// 顶部加载条
+const App = (props) => {
+  // 菜单展开/收缩
   const [collapsed, setCollapsed] = useState(false);
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
   };
+
+  // 加载站位 适当延时
+  const [loading, setLoading] = useState(true)
+  setTimeout(() => {
+    setLoading(false)
+  }, 400);
+
+
+  const navigate = useNavigate();
+  const onClick = async (item, key, keyPath, domEvent) => {
+    NProgress.start();
+    window.setTimeout(() => {
+      NProgress.done();
+    }, 400);
+    navigate(`${item.key}`);
+  }
+
+  // 默认选中菜单
+  const matches = useMatches();
+  const { data,pathname } = matches.at(-1)
   return (
     <>
       <Layout.Sider collapsed={collapsed} breakpoint='xl' collapsedWidth={80}></Layout.Sider>
@@ -76,21 +49,29 @@ const App = () => {
           flex: 1
         }}>
 
-          <Menu
-            mode="inline"
-            defaultSelectedKeys={['home']}
-            style={{
-              height: '100%',
-              borderRight: 0,
-            }}
-            items={items2}
-            onClick= {onClick}
-          />
+          <BashSiderSkeleton loading={loading}>
+            <Menu
+              mode="inline"
+              forceSubMenuRender={true}
+              defaultOpenKeys={data.parentPaths}
+              // openKeys={data.parentPaths}
+              defaultSelectedKeys={pathname}
+              // selectedKeys={pathname}
+              style={{
+                height: '100%',
+                borderRight: 0,
+                fontWeight: '500'
+              }}
+              items={props.menus}
+              onClick={onClick}
+            />
+          </BashSiderSkeleton>
+
         </div>
 
         <div style={{
           position: 'absolute',
-          insetBlockStart: '10px',
+          insetBlockStart: '40px',
           insetInlineEnd: '-13px',
         }}>
           <Tooltip title="search">
