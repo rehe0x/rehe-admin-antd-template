@@ -36,15 +36,16 @@ export const BashSiderSkeleton = (props) => {
 
 export const BaseHeaderSkeleton = (props) => {
   if (props.loading) {
+    const numbers = Array.from({ length: props.num ? props.num : 3}, (_, i) => i + 1); 
+
     return (
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        flex: 1
-      }}>
+      <div style={props.style}>
+        {numbers.map(n => (
+           <Skeleton.Button style={{ display: 'flex', marginInline: '10px' }} active block={false} />
+        ))}
+        {/* <Skeleton.Button style={{ display: 'flex', marginInline: '10px' }} active block={false} />
         <Skeleton.Button style={{ display: 'flex', marginInline: '10px' }} active block={false} />
-        <Skeleton.Button style={{ display: 'flex', marginInline: '10px' }} active block={false} />
-        <Skeleton.Button style={{ display: 'flex', marginInline: '10px' }} active block={false} />
+        <Skeleton.Button style={{ display: 'flex', marginInline: '10px' }} active block={false} /> */}
       </div>
     )
   } else {

@@ -80,7 +80,10 @@ export const App = () => {
               // itemMarginInline:12
             }
           },
-          cssVar: true
+          cssVar: {
+            key: 'my-var-css'
+          },
+          hashed: false
         }}
         componentSize={state.componentSize}
         locale={zhCN}

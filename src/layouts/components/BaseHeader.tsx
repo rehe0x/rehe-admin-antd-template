@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useMatches } from "react-router-dom";
-
-import { Layout, Menu, Space, Dropdown, ConfigProvider, message } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
+import { Layout, Menu, Space, Dropdown, ConfigProvider, message, Avatar, Badge } from 'antd';
+import { DownOutlined, SunOutlined, MoonOutlined } from '@ant-design/icons';
 
 import { useApp } from "@/stores/AppContext";
 import NProgress from '@/components/NProgress';
@@ -52,7 +51,7 @@ const centerItems = [
   {
     key: '2',
     type: 'group',
-    label: '@你好',
+    label: '潘西热河@你好',
     children: [
       {
         key: '1',
@@ -100,9 +99,9 @@ const App = (props) => {
     }, 350);
     navigate(item.key)
   }
-  
- const matches = useMatches();
- const { data,pathname }  = matches.at(-1)
+
+  const matches = useMatches();
+  const { data, pathname } = matches.at(-1)
   return (
     <Layout.Header
       style={{
@@ -133,10 +132,15 @@ const App = (props) => {
         }}
       >
 
-        <BaseHeaderSkeleton loading={props.topMenuItem.length === 0}>
+        <BaseHeaderSkeleton loading={props.topMenuItem.length === 0}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            flex: 1
+          }} >
           <Menu
             mode="horizontal"
-            defaultSelectedKeys={[data?.parentPaths ? data?.parentPaths![0] : null,pathname]}
+            defaultSelectedKeys={[data?.parentPaths ? data?.parentPaths![0] : null, pathname]}
             items={props.topMenuItem && props.topMenuItem.length > 0 ? props.topMenuItem : []}
             style={{
               lineHeight: '36px',
@@ -150,22 +154,50 @@ const App = (props) => {
         </BaseHeaderSkeleton>
       </ConfigProvider>
 
-      <Space size="large">
-        <Dropdown className="header-select" menu={{ items:themeItems, onClick: themeClick }} placement="bottom" arrow={{ pointAtCenter: true }}>
-          <a onClick={(e) => e.preventDefault()}>
-            主题布局
-          </a>
-        </Dropdown>
 
-        <Dropdown className="header-select" menu={{ items:centerItems, onClick: centerClick }} placement="bottom" arrow={{ pointAtCenter: true }} >
-          <a onClick={(e) => e.preventDefault()}>
-            <Space>
-              个人中心
-              <DownOutlined />
-            </Space>
-          </a>
-        </Dropdown>
-      </Space>
+      <BaseHeaderSkeleton num={2} loading={props.topMenuItem.length === 0}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+        }} >
+
+        <Space size="large">
+          <Dropdown className="header-select" menu={{ items: themeItems, onClick: themeClick }} placement="bottom" arrow={{ pointAtCenter: true }}>
+            <a style={{ fontSize: '20px' }} onClick={(e) => e.preventDefault()}>
+              <MoonOutlined />
+            </a>
+          </Dropdown>
+
+
+          <Dropdown className="header-select" menu={{ items: centerItems, onClick: centerClick }} placement="bottom" arrow={{ pointAtCenter: true }} >
+
+            <a style={{
+              fontWeight: 500
+            }} onClick={(e) => e.preventDefault()}>
+
+              <Space>
+                <Badge dot>
+                  <Avatar
+                    style={{
+                      backgroundColor: '#7265e6',
+                      verticalAlign: 'middle',
+                      display: 'flex'
+                    }}
+                    // size={35}
+                    gap={2}
+                  >
+                    Lucy
+                  </Avatar>
+                </Badge>
+                潘西热河
+                <DownOutlined />
+              </Space>
+            </a>
+          </Dropdown>
+        </Space>
+      </BaseHeaderSkeleton>
+
+
 
     </Layout.Header>
 
