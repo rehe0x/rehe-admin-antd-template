@@ -74,7 +74,7 @@ const App = (props) => {
           insetBlockStart: '40px',
           insetInlineEnd: '-13px',
         }}>
-          <Tooltip title="search">
+          <Tooltip title="折叠/展开">
             <Button onClick={toggleCollapsed} size='small' shape="circle" icon={<LeftOutlined rotate={collapsed ? 180 : 0} style={{
               fontSize: '10px'
             }} />} />

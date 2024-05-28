@@ -41,7 +41,7 @@ export const BaseHeaderSkeleton = (props) => {
     return (
       <div style={props.style}>
         {numbers.map(n => (
-           <Skeleton.Button style={{ display: 'flex', marginInline: '10px' }} active block={false} />
+           <Skeleton.Button style={{ display: 'flex', marginInline: '10px' }} key={n} active block={false} />
         ))}
         {/* <Skeleton.Button style={{ display: 'flex', marginInline: '10px' }} active block={false} />
         <Skeleton.Button style={{ display: 'flex', marginInline: '10px' }} active block={false} />

@@ -17,6 +17,7 @@ fetchMock.get('begin:/api/user/getMenu', (url, opts) => {
       title: '/',
       component: '/layouts/DefaultLayout',
       routePath: '/',
+      icon: ''
     },
 
     {
@@ -36,6 +37,7 @@ fetchMock.get('begin:/api/user/getMenu', (url, opts) => {
       title: 'Dashboard',
       component: '/page/main/Dashboard',
       routePath: '',
+      icon: 'HomeOutlined'
     },
     {
       id: 6,
@@ -44,6 +46,7 @@ fetchMock.get('begin:/api/user/getMenu', (url, opts) => {
       title: '系统管理',
       component: null,
       routePath: 'system',
+      icon: 'SettingOutlined'
     },
     {
       id: 61,
@@ -86,6 +89,8 @@ fetchMock.get('begin:/api/user/getMenu', (url, opts) => {
       title: '多级菜单',
       component: null,
       routePath: 'page',
+      icon: 'MenuOutlined'
+
     },
 
     {
@@ -95,6 +100,7 @@ fetchMock.get('begin:/api/user/getMenu', (url, opts) => {
       title: '二级目录',
       component: null,
       routePath: 'page2',
+
     },
 
     {
@@ -121,6 +127,8 @@ fetchMock.get('begin:/api/user/getMenu', (url, opts) => {
       title: '一级菜单',
       component: '/page/main/test/1',
       routePath: 'page11',
+      icon: 'MenuOutlined'
+
     },
     {
       id: 2,

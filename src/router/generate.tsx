@@ -82,7 +82,7 @@ export function menuArrayToTreeMap(menus) {
     key: node.routePath,
     label: node.title,
     children: null,
-    icon: React.createElement(icons['UserOutlined']),
+    icon: node.icon && icons[node.icon] ?  React.createElement(icons[node.icon]) : null,
     parentPaths: [],
     parentTitle: []
   }]));
