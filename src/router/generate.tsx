@@ -66,13 +66,9 @@ function menuToRouteObject(menu, children) {
     id: menu.id,
     element: pathToLazyComponent(menu.component + '.tsx', true),
     children: children,
-    loader: () => {
-      if (menu.parentId === 0 && menu.type === 1) {
-        return { menus: menu.children } 
-      } else {
-        return { parentPaths: menu.parentPaths, title: [...menu.parentTitle,menu.label] } 
-      }
-    }
+    loader: () => menu.parentId === 0 && menu.type === 1 
+    ? { menus: menu.children } 
+    : { parentPaths: menu.parentPaths, title: [...menu.parentTitle,menu.label] } 
   }
   return route;
 }
@@ -94,62 +90,60 @@ export function menuArrayToTreeMap(menus) {
   const menuTree = [];
   const routesMap = new Map();
 
-  for (const node of map.values()) {
-    // 生成菜单树 
+  // 生成菜单树 
+  map.forEach(node => {  
     // key作为路由地址 规则 根菜单path+...子菜单path
-    if (node.parentId === 0) {
-      node.key = node.key === '/' ? "" : "/" + node.key;
-      menuTree.push(node);
-      // node.parentTitle = [...parent.parentTitle,parent.label]
-
-    } else {
-      const parent = map.get(node.parentId);
-      node.key = parent.key + "/" + node.key;
-      (parent.children || (parent.children = [])).push(node);
-
-       node.parentPaths = [...parent.parentPaths,parent.key]
-       node.parentTitle = [...parent.parentTitle,parent.label]
+    if (!node.hidden ||  node.hidden !== 1) {
+      if (node.parentId === 0) {
+        node.key = node.key === '/' ? "" : "/" + node.key;
+        menuTree.push(node);
+      } else {
+        const parent = map.get(node.parentId);
+        node.key = parent.key + "/" + node.key;
+        (parent.children || (parent.children = [])).push(node);
+  
+         node.parentPaths = [...parent.parentPaths,parent.key]
+         node.parentTitle = [...parent.parentTitle,parent.label]
+      }
+  
     }
-
+   
 
     // 生成路由 最多两级（目录不生成路由）
     // 一级菜单如果是目录下面的所有子菜单路由会放在一级 路由地址不需要特殊处理
     // 一级菜单 “/” 路由需要转换为 “/*” 下面的子路由需要加上 “/*”前缀 如 /*/system/user 
     // 一级菜单非 “/” 路由 需要加上“/*” 后缀 如 /data/* 下面的子路由不需要  如 /data/p1/p2
     // 先这样
-    if (node.type === 1) {
-      const routeObj = menuToRouteObject(node, [])
-      if (node.parentId === 0) {
-        routeObj.path = node.routePath === '/' ? '/*' : node.routePath + `/*`
-        routesMap.set(routeObj.id, routeObj)
-      } else {
-        const { rootNode, path } = findMenuRoot(map, node.parentId, '')
+    if (node.type !== 1) return;  // 跳过非路由菜单
 
-        if (rootNode.type === 1) {
-          routeObj.path = rootNode.routePath === '/' ? '/*/' + path  + node.routePath : path  + node.routePath;
-          const route = routesMap.get(rootNode.id);
-          if (!route) {
-            const rootRouteObj = menuToRouteObject(rootNode, [routeObj])
-            rootRouteObj.path = rootNode.routePath === '/' ? '/*' : rootNode.routePath + `/*`;
-            routesMap.set(rootRouteObj.id, rootRouteObj)
-          } else {
-            route.children.push(routeObj)
-          }
+    const routeObj = menuToRouteObject(node, [])
+    if (node.parentId === 0) {
+      routeObj.path = node.routePath === '/' ? '/*' : node.routePath + `/*`
+      routesMap.set(routeObj.id, routeObj)
+    } else {
+      const { rootNode, path } = findMenuRoot(map, node.parentId, '')
+      if (rootNode.type === 1) {
+        routeObj.path = rootNode.routePath === '/' ? '/*/' + path  + node.routePath : path  + node.routePath;
+        const route = routesMap.get(rootNode.id);
+        if (route) {
+          route.children.push(routeObj)
         } else {
-          routeObj.path = rootNode.routePath + '/' +path  + node.routePath
-          routesMap.set(routeObj.id, routeObj)
+          const rootRouteObj = menuToRouteObject(rootNode, [routeObj])
+          rootRouteObj.path = rootNode.routePath === '/' ? '/*' : rootNode.routePath + `/*`;
+          routesMap.set(rootRouteObj.id, rootRouteObj)
         }
+      } else {
+        routeObj.path = rootNode.routePath + '/' +path  + node.routePath
+        routesMap.set(routeObj.id, routeObj)
       }
     }
-  }
+  });
 
   // 生成顶部菜单
-  const topMenuTree = [];
-  menuTree.forEach((element) => {
-    topMenuTree.push({
-      ...element, children: element.type === 0 ? element.children : null
-    })
-  })
+  const topMenuTree = menuTree.map(element => ({
+    ...element,
+    children: element.type === 0 ? element.children : null,
+  }));
 
   return { topMenuTree, menuTree, routeTree: Array.from(routesMap.values()) };
 }

@@ -18,6 +18,17 @@ fetchMock.get('begin:/api/user/getMenu', (url, opts) => {
       component: '/layouts/DefaultLayout',
       routePath: '/',
     },
+
+    {
+      id: 401302,
+      parentId: 0,
+      type: 1,
+      title: '404',
+      component: '/page/404',
+      routePath: '/*',
+      hidden: 1
+    },
+
     {
       id: 5,
       parentId: 1,
@@ -126,6 +137,16 @@ fetchMock.get('begin:/api/user/getMenu', (url, opts) => {
       title: 'Dashboard',
       component: '/page/data/Dashboard',
       routePath: '',
+    },
+
+    {
+      id: 40130,
+      parentId: 2,
+      type: 1,
+      title: '404',
+      component: '/page/404',
+      routePath: '*',
+      hidden: 1
     },
 
     {

@@ -1,6 +1,7 @@
 import { createBrowserRouter,RouterProvider } from "react-router-dom"
 
-import Login from "@/page/Login";
+import Login from "@/page/Login2";
+import NoPage from "@/page/404";
 
 export const router = createBrowserRouter([
   {
@@ -80,6 +81,11 @@ export const router = createBrowserRouter([
     path: "/login",
     element: <Login />,
   },
+  // {
+  //   path: "/*",
+  //   element: <NoPage />,
+  // },
+  
 ]);
 
 
