@@ -68,7 +68,7 @@ const centerItems = [
     ],
   },
   {
-    key: '33',
+    key: '999',
     label: '退出',
   },
 ];
@@ -87,7 +87,10 @@ const App = (props) => {
   }
   // 个人中心
   const centerClick = ({ key }) => {
-    message.info(`Click on item ${key}`);
+    if (key == 999) {
+      navigate('/login')
+      message.info(`退出成功`);
+    } 
   };
 
   // 顶部路由跳转

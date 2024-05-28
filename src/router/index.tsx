@@ -1,7 +1,6 @@
 import { createBrowserRouter,RouterProvider } from "react-router-dom"
 
-import Login from "@/page/Login2";
-import NoPage from "@/page/404";
+import Login from "@/page/login/Login";
 
 export const router = createBrowserRouter([
   {
