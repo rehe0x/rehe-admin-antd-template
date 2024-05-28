@@ -99,9 +99,9 @@ export function menuArrayToTreeMap(menus) {
         menuTree.push(node);
       } else {
         const parent = map.get(node.parentId);
-        node.key = parent.key + "/" + node.key;
+        node.key =  parent.key + "/" + node.key;
+        
         (parent.children || (parent.children = [])).push(node);
-  
          node.parentPaths = [...parent.parentPaths,parent.key]
          node.parentTitle = [...parent.parentTitle,parent.label]
       }
@@ -133,7 +133,9 @@ export function menuArrayToTreeMap(menus) {
           routesMap.set(rootRouteObj.id, rootRouteObj)
         }
       } else {
-        routeObj.path = rootNode.routePath + '/' +path  + node.routePath
+        routeObj.path = rootNode.routePath === '/' 
+          ? rootNode.routePath + '*/' +path  + node.routePath 
+          : rootNode.routePath + '/' +path  + node.routePath
         routesMap.set(routeObj.id, routeObj)
       }
     }

@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect,useLayoutEffect } from 'react';
 import { useNavigate,useMatches } from "react-router-dom";
 import { Layout, Menu, Button, Tooltip, Typography } from 'antd';
 import { LeftOutlined } from '@ant-design/icons';
 import NProgress from '@/components/NProgress';
 import { BashSiderSkeleton } from "@/layouts/components/Skeleton";
+import storage from "@/common/storage";
 
 // 顶部加载条
 const App = (props) => {
   // 菜单展开/收缩
-  const [collapsed, setCollapsed] = useState(false);
+  const ca = storage.getStorage('collapsed')
+  const [collapsed, setCollapsed] = useState(ca?.collapsed);
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
+    storage.setStorage('collapsed',JSON.stringify({collapsed: !collapsed}))
   };
 
   // 加载站位 适当延时

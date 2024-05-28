@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useState } from 'react'
 import { ConfigProvider,MappingAlgorithm,Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 
@@ -53,10 +53,19 @@ export const App = () => {
 
   const [state, dispatch] = useReducer(reducer, themeState);
 
+  const lm = storage.getStorage('layoutMode')
+  const [layoutMode, setLayoutMode] = useState(lm?.layoutMode)
+
+  const setLayout = (k)=>{
+    setLayoutMode(k)
+    storage.setStorage('layoutMode',JSON.stringify({layoutMode: k}))
+  }
   return (
     <AppContext.Provider
       value={{
-        setTheme: dispatch
+        setTheme: dispatch,
+        layoutMode: layoutMode,
+        setLayoutMode:setLayout
       }}
     >
       <ConfigProvider

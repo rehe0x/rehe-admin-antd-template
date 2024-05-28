@@ -47,6 +47,22 @@ const themeItems = [
 
 
 
+
+const layoutItems = [
+  {
+    key: '1',
+    label: '默认',
+  },
+  {
+    key: '2',
+    label: 'Top',
+  },
+  {
+    key: '3',
+    label: 'Left',
+  },
+];
+
 const centerItems = [
   {
     key: '2',
@@ -80,10 +96,16 @@ window.setTimeout(() => {
 }, 500);
 
 const App = (props) => {
-  const { setTheme } = useApp();
+  const { setTheme,setLayoutMode } = useApp();
   // 修改 context 中的值
   const themeClick = (e) => {
     setTheme(e.key)
+  }
+  const layoutClick = (e) => {
+    navigate('')
+    setTimeout(()=>{
+      setLayoutMode(e.key)
+    },500)
   }
   // 个人中心
   const centerClick = ({ key }) => {
@@ -95,16 +117,24 @@ const App = (props) => {
 
   // 顶部路由跳转
   const navigate = useNavigate()
-  const routerClick = (item) => {
+  const routerClick = (item, key, keyPath, domEvent ) => {
+    console.log('=======')
+    console.log(item)
+    console.log(key)
+
+    console.log(keyPath)
+
+
     NProgress.start();
     window.setTimeout(() => {
       NProgress.done();
     }, 350);
-    navigate(item.key)
+    navigate(item.keyPath[0])
   }
-
   const matches = useMatches();
+
   const { data, pathname } = matches.at(-1)
+
   return (
     <Layout.Header
       style={{
@@ -144,7 +174,7 @@ const App = (props) => {
           <Menu
             mode="horizontal"
             defaultSelectedKeys={[data?.parentPaths ? data?.parentPaths![0] : null, pathname]}
-            items={props.topMenuItem && props.topMenuItem.length > 0 ? props.topMenuItem : []}
+            items={props.topMenuItem && props.topMenuItem.length > 1 ? props.topMenuItem : []}
             style={{
               lineHeight: '36px',
               flex: 1,
@@ -165,12 +195,20 @@ const App = (props) => {
         }} >
 
         <Space size="large">
+        
           <Dropdown className="header-select" menu={{ items: themeItems, onClick: themeClick }} placement="bottom" arrow={{ pointAtCenter: true }}>
-            <a style={{ fontSize: '20px' }} onClick={(e) => e.preventDefault()}>
+            <a style={{ fontSize: '18px' }} onClick={(e) => e.preventDefault()}>
               <MoonOutlined />
             </a>
           </Dropdown>
 
+          <Dropdown className="header-select" menu={{ items: layoutItems, onClick: layoutClick }} placement="bottom" arrow={{ pointAtCenter: true }}>
+            <a  style={{
+              fontWeight: 500
+            }}  onClick={(e) => e.preventDefault()}>
+              布局
+            </a>
+          </Dropdown>
 
           <Dropdown className="header-select" menu={{ items: centerItems, onClick: centerClick }} placement="bottom" arrow={{ pointAtCenter: true }} >
 

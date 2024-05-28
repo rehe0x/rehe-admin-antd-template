@@ -6,23 +6,28 @@ import { BashIndexSkeleton } from "@/layouts/components/Skeleton";
 import { router } from "@/router/index";
 import { menuArrayToTreeMap } from "@/router/generate";
 import request from "@/common/request";
+import { useApp } from "@/stores/AppContext";
 
 import './Index.css'
 
 // 获取菜单创建路由
 const App = () => {
+  const { layoutMode } = useApp()
   const location = useLocation();
-  useEffect(() => {
-
-  }, [])
-
   const [loading, setLoading] = useState(true)
   const [topMenuItem, setTopMenuItem] = useState([])
-
+ // 获取菜单
   useLayoutEffect(() => {
     (async () => {
-      // 获取菜单
-      const menuList = await request.get('/api/user/getMenu');
+     
+      let menuList = []
+      if (layoutMode == 1) {
+        menuList = await request.get('/api/user/getMenu');
+      } else if(layoutMode == 2){
+        menuList = await request.get('/api/user/getMenuTop');
+      } else {
+        menuList = await request.get('/api/user/getMenuLeft');
+      }
       // 生成菜单及路由
       const { topMenuTree, routeTree,  menuTree} = menuArrayToTreeMap(menuList);
       console.log('routeTree')
@@ -41,7 +46,7 @@ const App = () => {
         // 适当延迟过度效果
       // }, 0);
     })();
-  }, [])
+  }, [layoutMode])
 
   return (
     <Layout>
