@@ -9,7 +9,7 @@ const App = () => {
   console.log(matches)
   const { data } = matches.at(-2)
   return (
-    <div style={{ paddingTop: '55px' }}>
+    <div style={{}}>
       <div className='' style={{
         display: 'flex',
         alignItems: 'center',
@@ -19,9 +19,7 @@ const App = () => {
       }}>
         <HorizontalMenu menus={data ? data.menus : []} />
       </div>
-      <div style={{ paddingInline: '20px', paddingBlock: '26px' }}>
-        <Outlet />
-      </div>
+      <Outlet />
     </div>
   )
 }

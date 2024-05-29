@@ -8,8 +8,7 @@ import { menuArrayToTreeMap } from "@/router/generate";
 import request from "@/common/request";
 import { useApp } from "@/stores/AppContext";
 
-import './Index.css'
-
+import('@/styles/TableLayout.css')
 // 获取菜单创建路由
 const App = () => {
   const { layoutMode } = useApp()
@@ -52,7 +51,9 @@ const App = () => {
     <Layout>
       <BaseHeader topMenuItem={topMenuItem} />
       <BashIndexSkeleton loading={loading}>
-        <Outlet />
+        <div style={{marginTop: '55px'}}>
+          <Outlet />
+        </div>
       </BashIndexSkeleton>
     </Layout>
   );

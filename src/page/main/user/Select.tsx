@@ -6,12 +6,7 @@ const AdvancedSearchForm = () => {
   const { token } = theme.useToken();
   const [form] = Form.useForm();
   const [expand, setExpand] = useState(false);
-  const formStyle = {
-    maxWidth: 'none',
-    // background: token.colorFillAlter,
-    borderRadius: token.borderRadiusLG,
-    paddingBottom: 0,
-  };
+
   const getFields = () => {
     const count = expand ? 10 : 3;
     const children = [];
@@ -62,33 +57,8 @@ const AdvancedSearchForm = () => {
     console.log('Received values of form: ', values);
   };
   return (
-    <Form form={form} name="advanced_search" style={formStyle} onFinish={onFinish}>
+    <Form form={form} name="advanced_search"  onFinish={onFinish}>
       <Row gutter={24}>{getFields()}</Row>
-      {/* <div style={{
-          textAlign: 'right',
-        }}>sdf</div> */}
-        {/* <div style={{
-            display: 'flex',
-            justifyContent: 'space-between'
-        }}> */}
-
-        
-        {/* <div>
-        
-        <Space size="small">
-          <Button type="primary" htmlType="submit">
-            新增
-          </Button>
-          <Button
-            onClick={() => {
-              form.resetFields();
-            }}
-          >
-            编辑
-          </Button>
-     
-        </Space>
-        </div> */}
       <div
         style={{
           textAlign: 'right',

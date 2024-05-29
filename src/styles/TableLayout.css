@@ -1,0 +1,17 @@
+.page-layout{
+  margin: 16px 24px 10px 24px;
+ 
+}
+.page-layout .layout-content{
+  padding: 24px;
+  margin: 20px 0px 0px;
+  flex: 0 0 auto;
+  background: var(--ant-color-bg-container);
+  border-radius: var(--ant-border-radius-lg);
+}
+
+.page-layout .layout-title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}

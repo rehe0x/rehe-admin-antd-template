@@ -14,18 +14,12 @@ const App = () => {
     });
     return(
       <Breadcrumb
-      style={{
-        margin: '16px 0',
-      }}
       items={items}
     />
     )
   } else {
     return(
       <Breadcrumb
-      style={{
-        margin: '16px 0',
-      }}
       items={[{title: ''}]}
     />
     )

@@ -6,7 +6,7 @@ import { DownOutlined, SunOutlined, MoonOutlined } from '@ant-design/icons';
 import { useApp } from "@/stores/AppContext";
 import NProgress from '@/components/NProgress';
 import { BaseHeaderSkeleton } from "@/layouts/components/Skeleton";
-import './Index.css'
+import './BaseHeader.css'
 
 const themeItems = [
   {
