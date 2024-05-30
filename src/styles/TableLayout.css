@@ -1,6 +1,6 @@
 .page-layout{
   margin: 16px 24px 10px 24px;
- 
+  min-width: 800px;
 }
 .page-layout .layout-content{
   padding: 24px;

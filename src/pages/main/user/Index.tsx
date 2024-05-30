@@ -1,13 +1,12 @@
 import React, { useState ,useEffect} from 'react';
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
-import { Layout, Menu, theme, Space, Button, Dropdown, Spin, ConfigProvider, Table,Tag} from 'antd';
-import { DownOutlined, AlignLeftOutlined, BarChartOutlined } from '@ant-design/icons';
+import { Layout,  Space, Button, Dropdown, Table,Tag} from 'antd';
+import {  AlignLeftOutlined, BarChartOutlined } from '@ant-design/icons';
+
+import Breadcrumb from "@/components/Breadcrumb";
 import { useTable } from '@/hooks/UseTable'
+import Query from '@/pages/main/user/Query'
 import { UserService } from "./service";
 
-// import Table from '@/page/main/user/Table'
-import Query from '@/pages/main/user/Query'
-import Breadcrumb from "@/components/Breadcrumb";
 const items = [
   {
     label: <a href="https://www.antgroup.com">1st menu item</a>,
@@ -89,37 +88,35 @@ const App = () => {
   const{ tableProps,refresh,search }= useTable(UserService.getUserList)
 
   return (
-    <>
-      <Layout className='page-layout' >
-        <Breadcrumb />
-        
-        <Layout.Content className='layout-content'>
-          <Query search={search} />
-        </Layout.Content>
+    <Layout className='page-layout' >
+      <Breadcrumb />
+      
+      <Layout.Content className='layout-content'>
+        <Query search={search} />
+      </Layout.Content>
 
-        <Layout.Content className='layout-content' >
-          <div className='layout-title'>
-            <Space size="small">
-              <Button type="primary" htmlType="submit">新增</Button>
-              <Button onClick={() => { form.resetFields(); }}>编辑</Button>
-            </Space>
-            <Space size="middle">
-              <Dropdown menu={{ items }} trigger={['click']}>
-                <a onClick={(e) => e.preventDefault()}>
-                  <AlignLeftOutlined />
-                </a>
-              </Dropdown>
-              <Dropdown menu={{ items }} trigger={['click']}>
-                <a onClick={(e) => e.preventDefault()}>
-                  <BarChartOutlined />
-                </a>
-              </Dropdown>
-            </Space>
-          </div>
-          <Table columns={columns} {...tableProps}/>
-        </Layout.Content>
-      </Layout>
-    </>
+      <Layout.Content className='layout-content' >
+        <div className='layout-title'>
+          <Space size="small">
+            <Button type="primary" htmlType="submit">新增</Button>
+            <Button onClick={() => { form.resetFields(); }}>编辑</Button>
+          </Space>
+          <Space size="middle">
+            <Dropdown menu={{ items }} trigger={['click']}>
+              <a onClick={(e) => e.preventDefault()}>
+                <AlignLeftOutlined />
+              </a>
+            </Dropdown>
+            <Dropdown menu={{ items }} trigger={['click']}>
+              <a onClick={(e) => e.preventDefault()}>
+                <BarChartOutlined />
+              </a>
+            </Dropdown>
+          </Space>
+        </div>
+        <Table columns={columns} {...tableProps}/>
+      </Layout.Content>
+    </Layout>
   );
 };
 export default App;
