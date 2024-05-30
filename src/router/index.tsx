@@ -1,12 +1,12 @@
 import { createBrowserRouter,RouterProvider } from "react-router-dom"
 
-import Login from "@/page/login/Login";
+import Login from "@/pages/login/Login";
 
 export const router = createBrowserRouter([
   {
     path: "*",
     lazy: async () => ({
-      Component: ((await import('@/page/Index')).default),
+      Component: ((await import('@/pages/Index')).default),
     }),
     // element: pathToLazyComponent('/page/Index.tsx',false),
     children:[

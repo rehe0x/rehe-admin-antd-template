@@ -1,10 +1,10 @@
 import React,{} from 'react';
 import { Space } from 'antd';
-import Bar from "@/page/data/Bar";
-import Bar2 from "@/page/data/Bar2";
+import Bar from "@/pages/data/Bar";
+import Bar2 from "@/pages/data/Bar2";
 
-import Line from "@/page/data/Line";
-import Pie from "@/page/data/Pie";
+import Line from "@/pages/data/Line";
+import Pie from "@/pages/data/Pie";
 
 const App = ()=> {
   return(

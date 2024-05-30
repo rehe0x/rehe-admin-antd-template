@@ -4,7 +4,7 @@ import { Layout, Menu, theme, Space, Button, Dropdown, Spin, ConfigProvider, } f
 import { DownOutlined, AlignLeftOutlined, BarChartOutlined } from '@ant-design/icons';
 
 import Table from '@/page/main/user/Table'
-import Select from '@/page/main/user/Select'
+import Select from '@/pages/main/user/Select'
 import Breadcrumb from "@/components/Breadcrumb";
 const items = [
   {

@@ -25,7 +25,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       parentId: 0,
       type: 1,
       title: '404',
-      component: '/page/404',
+      component: '/pages/404',
       routePath: '/*',
       hidden: 1
     },
@@ -35,7 +35,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       parentId: 1,
       type: 1,
       title: 'Dashboard',
-      component: '/page/main/Dashboard',
+      component: '/pages/main/Dashboard',
       routePath: '',
       icon: 'HomeOutlined'
     },
@@ -53,7 +53,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       parentId: 6,
       type: 1,
       title: '用户管理',
-      component: '/page/main/user/List',
+      component: '/pages/main/user/Index',
       routePath: 'user',
     },
     {
@@ -61,7 +61,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       parentId: 6,
       type: 1,
       title: '菜单权限',
-      component: '/page/main/menu/List',
+      component: '/pages/main/menu/Index',
       routePath: 'menu',
     },
     {
@@ -69,7 +69,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       parentId: 6,
       type: 1,
       title: '角色管理',
-      component: '/page/main/role/List',
+      component: '/pages/main/role/List',
       routePath: 'role',
     },
     {
@@ -77,7 +77,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       parentId: 6,
       type: 1,
       title: '部门管理',
-      component: '/page/main/dept/List',
+      component: '/pages/main/dept/List',
       routePath: 'dept',
     },
 
@@ -108,7 +108,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       parentId: 901,
       type: 1,
       title: '三级菜单',
-      component: '/page/main/test/3',
+      component: '/pages/main/test/3',
       routePath: 'page3',
     },
 
@@ -117,7 +117,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       parentId: 90,
       type: 1,
       title: '二级菜单',
-      component: '/page/main/test/2',
+      component: '/pages/main/test/2',
       routePath: 'page22',
     },
     {
@@ -125,7 +125,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       parentId: 1,
       type: 1,
       title: '一级菜单',
-      component: '/page/main/test/1',
+      component: '/pages/main/test/1',
       routePath: 'page11',
       icon: 'MenuOutlined'
 
@@ -143,7 +143,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       parentId: 2,
       type: 1,
       title: 'Dashboard',
-      component: '/page/data/Dashboard',
+      component: '/pages/data/Dashboard',
       routePath: '',
     },
 
@@ -152,7 +152,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       parentId: 2,
       type: 1,
       title: '404',
-      component: '/page/404',
+      component: '/pages/404',
       routePath: '*',
       hidden: 1
     },
@@ -162,7 +162,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       parentId: 2,
       type: 1,
       title: '图表2',
-      component: '/page/data/1',
+      component: '/pages/data/1',
       routePath: 'page1',
     },
 
@@ -180,7 +180,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       parentId: 401,
       type: 1,
       title: '图表3',
-      component: '/page/data/3',
+      component: '/pages/data/3',
       routePath: 'p3',
     },
     {
@@ -188,7 +188,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       parentId: 401,
       type: 1,
       title: '图表4',
-      component: '/page/data/4',
+      component: '/pages/data/4',
       routePath: 'p4',
     },
 
@@ -197,7 +197,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       parentId: 0,
       type: 1,
       title: '随便',
-      component: '/page/sb/Dashboard',
+      component: '/pages/sb/Dashboard',
       routePath: 'sb',
     },
 
@@ -214,7 +214,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       parentId: 1000,
       type: 1,
       title: 'Dashboard',
-      component: '/page/menu/1',
+      component: '/pages/menu/1',
       routePath: 'dashboard',
     },
     {
@@ -230,7 +230,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       parentId: 10002,
       type: 1,
       title: '三级菜单2',
-      component: '/page/menu/2',
+      component: '/pages/menu/2',
       routePath: 'page32',
     },
     {
@@ -238,7 +238,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       parentId: 10002,
       type: 1,
       title: '三级菜单3',
-      component: '/page/menu/3',
+      component: '/pages/menu/3',
       routePath: 'page33',
     }
   ]
@@ -270,7 +270,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       parentId: 0,
       type: 1,
       title: '404',
-      component: '/page/404',
+      component: '/pages/404',
       routePath: '/*',
       hidden: 1
     },
@@ -280,7 +280,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       parentId: 1,
       type: 1,
       title: 'Dashboard',
-      component: '/page/main/Dashboard',
+      component: '/pages/main/Dashboard',
       routePath: '',
       icon: 'HomeOutlined'
     },
@@ -298,7 +298,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       parentId: 6,
       type: 1,
       title: '用户管理',
-      component: '/page/main/user/List',
+      component: '/pages/main/user/Index',
       routePath: 'user',
     },
     {
@@ -306,7 +306,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       parentId: 6,
       type: 1,
       title: '菜单权限',
-      component: '/page/main/menu/List',
+      component: '/pages/main/menu/Index',
       routePath: 'menu',
     },
     {
@@ -314,7 +314,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       parentId: 6,
       type: 1,
       title: '角色管理',
-      component: '/page/main/role/List',
+      component: '/pages/main/role/List',
       routePath: 'role',
     },
     {
@@ -322,7 +322,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       parentId: 6,
       type: 1,
       title: '部门管理',
-      component: '/page/main/dept/List',
+      component: '/pages/main/dept/List',
       routePath: 'dept',
     },
 
@@ -353,7 +353,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       parentId: 901,
       type: 1,
       title: '三级菜单',
-      component: '/page/main/test/3',
+      component: '/pages/main/test/3',
       routePath: 'page3',
     },
 
@@ -362,7 +362,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       parentId: 90,
       type: 1,
       title: '二级菜单',
-      component: '/page/main/test/2',
+      component: '/pages/main/test/2',
       routePath: 'page22',
     },
     {
@@ -370,7 +370,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       parentId: 1,
       type: 1,
       title: '一级菜单',
-      component: '/page/main/test/1',
+      component: '/pages/main/test/1',
       routePath: 'page11',
       icon: 'MenuOutlined'
 
@@ -388,7 +388,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       parentId: 2,
       type: 1,
       title: 'Dashboard',
-      component: '/page/data/Dashboard',
+      component: '/pages/data/Dashboard',
       routePath: '',
     },
 
@@ -397,7 +397,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       parentId: 2,
       type: 1,
       title: '404',
-      component: '/page/404',
+      component: '/pages/404',
       routePath: '*',
       hidden: 1
     },
@@ -407,7 +407,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       parentId: 2,
       type: 1,
       title: '图表2',
-      component: '/page/data/1',
+      component: '/pages/data/1',
       routePath: 'page1',
     },
 
@@ -425,7 +425,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       parentId: 401,
       type: 1,
       title: '图表3',
-      component: '/page/data/3',
+      component: '/pages/data/3',
       routePath: 'p3',
     },
     {
@@ -433,7 +433,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       parentId: 401,
       type: 1,
       title: '图表4',
-      component: '/page/data/4',
+      component: '/pages/data/4',
       routePath: 'p4',
     },
 
@@ -442,7 +442,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       parentId: 0,
       type: 1,
       title: '随便',
-      component: '/page/sb/Dashboard',
+      component: '/pages/sb/Dashboard',
       routePath: 'sb',
     },
 
@@ -459,7 +459,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       parentId: 1000,
       type: 1,
       title: 'Dashboard',
-      component: '/page/menu/1',
+      component: '/pages/menu/1',
       routePath: 'dashboard',
     },
     {
@@ -475,7 +475,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       parentId: 10002,
       type: 1,
       title: '三级菜单2',
-      component: '/page/menu/2',
+      component: '/pages/menu/2',
       routePath: 'page32',
     },
     {
@@ -483,7 +483,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       parentId: 10002,
       type: 1,
       title: '三级菜单3',
-      component: '/page/menu/3',
+      component: '/pages/menu/3',
       routePath: 'page33',
     }
   ]
@@ -515,7 +515,7 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
       parentId: 0,
       type: 1,
       title: '404',
-      component: '/page/404',
+      component: '/pages/404',
       routePath: '/*',
       hidden: 1
     },
@@ -525,7 +525,7 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
       parentId: 1,
       type: 1,
       title: 'Dashboard',
-      component: '/page/main/Dashboard',
+      component: '/pages/main/Dashboard',
       routePath: '',
       icon: 'HomeOutlined'
     },
@@ -543,7 +543,7 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
       parentId: 6,
       type: 1,
       title: '用户管理',
-      component: '/page/main/user/List',
+      component: '/pages/main/user/Index',
       routePath: 'user',
     },
     {
@@ -551,7 +551,7 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
       parentId: 6,
       type: 1,
       title: '菜单权限',
-      component: '/page/main/menu/List',
+      component: '/pages/main/menu/Index',
       routePath: 'menu',
     },
     {
@@ -559,7 +559,7 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
       parentId: 6,
       type: 1,
       title: '角色管理',
-      component: '/page/main/role/List',
+      component: '/pages/main/role/List',
       routePath: 'role',
     },
     {
@@ -567,7 +567,7 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
       parentId: 6,
       type: 1,
       title: '部门管理',
-      component: '/page/main/dept/List',
+      component: '/pages/main/dept/List',
       routePath: 'dept',
     },
 
@@ -598,7 +598,7 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
       parentId: 901,
       type: 1,
       title: '三级菜单',
-      component: '/page/main/test/3',
+      component: '/pages/main/test/3',
       routePath: 'page3',
     },
 
@@ -607,7 +607,7 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
       parentId: 90,
       type: 1,
       title: '二级菜单',
-      component: '/page/main/test/2',
+      component: '/pages/main/test/2',
       routePath: 'page22',
     },
     {
@@ -615,7 +615,7 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
       parentId: 1,
       type: 1,
       title: '一级菜单',
-      component: '/page/main/test/1',
+      component: '/pages/main/test/1',
       routePath: 'page11',
       icon: 'MenuOutlined'
 
@@ -633,7 +633,7 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
     //   parentId: 2,
     //   type: 1,
     //   title: 'Dashboard',
-    //   component: '/page/data/Dashboard',
+    //   component: '/pages/data/Dashboard',
     //   routePath: '',
     // },
 
@@ -642,7 +642,7 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
     //   parentId: 2,
     //   type: 1,
     //   title: '404',
-    //   component: '/page/404',
+    //   component: '/pages/404',
     //   routePath: '*',
     //   hidden: 1
     // },
@@ -652,7 +652,7 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
     //   parentId: 2,
     //   type: 1,
     //   title: '图表2',
-    //   component: '/page/data/1',
+    //   component: '/pages/data/1',
     //   routePath: 'page1',
     // },
 
@@ -670,7 +670,7 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
     //   parentId: 401,
     //   type: 1,
     //   title: '图表3',
-    //   component: '/page/data/3',
+    //   component: '/pages/data/3',
     //   routePath: 'p3',
     // },
     // {
@@ -678,7 +678,7 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
     //   parentId: 401,
     //   type: 1,
     //   title: '图表4',
-    //   component: '/page/data/4',
+    //   component: '/pages/data/4',
     //   routePath: 'p4',
     // },
 
@@ -687,7 +687,7 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
     //   parentId: 0,
     //   type: 1,
     //   title: '随便',
-    //   component: '/page/sb/Dashboard',
+    //   component: '/pages/sb/Dashboard',
     //   routePath: 'sb',
     // },
 
@@ -704,7 +704,7 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
     //   parentId: 1000,
     //   type: 1,
     //   title: 'Dashboard',
-    //   component: '/page/menu/1',
+    //   component: '/pages/menu/1',
     //   routePath: 'dashboard',
     // },
     // {
@@ -720,7 +720,7 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
     //   parentId: 10002,
     //   type: 1,
     //   title: '三级菜单2',
-    //   component: '/page/menu/2',
+    //   component: '/pages/menu/2',
     //   routePath: 'page32',
     // },
     // {
@@ -728,9 +728,37 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
     //   parentId: 10002,
     //   type: 1,
     //   title: '三级菜单3',
-    //   component: '/page/menu/3',
+    //   component: '/pages/menu/3',
     //   routePath: 'page33',
     // }
   ]
   return menuList
+}, { delay:500 })
+
+
+
+/**
+ * 获取userlist
+ */
+fetchMock.get('begin:/api/user/list', (url, opts) => {
+  const queryParams = qs.parse(url.split('?')[1])
+  console.log('Query params:', queryParams);
+
+  const userList = []
+  const pageNum = queryParams?.pageNum ? queryParams?.pageNum as number : 1
+  const pageSize = queryParams?.pageSize ? queryParams?.pageSize as number : 10
+  console.log(pageSize)
+  var i = 1;
+  while(i<=pageSize){
+    userList.push({
+      id: i,
+      name: '你好'+pageNum,
+      age: i,
+      address: '撒地方撒地方',
+      tags: ['nice', 'developer',i+""],
+    })
+    i++;
+  }
+
+  return {data: userList,total: Math.ceil(Math.random()*900000)}
 }, { delay:500 })

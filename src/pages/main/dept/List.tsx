@@ -4,7 +4,7 @@ import { Layout, Menu, theme, Space, Button, Dropdown, Spin,ConfigProvider, } fr
 import { DownOutlined, AlignLeftOutlined, BarChartOutlined } from '@ant-design/icons';
 
 import Table from '@/page/main/user/Table'
-import Select from '@/page/main/user/Select'
+import Select from '@/pages/main/user/Select'
 import Breadcrumb from "@/components/Breadcrumb";
 
 const items = [
@@ -37,7 +37,7 @@ const App = () => {
         <Layout.Content
           className='layout-content layout-content-margin-bottom'
         >
-         角色管理
+         部门管理
         </Layout.Content>
 
         

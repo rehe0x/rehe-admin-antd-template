@@ -3,8 +3,8 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Typography, Space, Divider } from 'antd';
 import { useNavigate } from "react-router-dom";
 import storage from "@/common/storage";
-import LoginForm from "@/page/login/Form";
-import LeftCarousel from "@/page/login/Left";
+import LoginForm from "@/pages/login/Form";
+import LeftCarousel from "@/pages/login/Left";
 
 import './Login.css'
 

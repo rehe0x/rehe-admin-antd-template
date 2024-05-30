@@ -112,9 +112,15 @@ class http {
    * @param url
    * @param option
    */
-  get(url, option = {}) {
+  get(url, params = {},option = {}) {
     const options = Object.assign({ method: 'GET' }, option);
-    return http.bashFetch(url, options);
+
+    let urlParam = ''
+    if(Object.keys(params).length !== 0){
+       urlParam = '?'+stringify(params)
+    }
+    console.log(urlParam)
+    return http.bashFetch(url+urlParam, options);
   }
 }
 

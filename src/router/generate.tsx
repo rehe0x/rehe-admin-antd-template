@@ -4,7 +4,7 @@ import * as icons from '@ant-design/icons';
 import { LoadingOutlined } from '@ant-design/icons';
 
 export const layout_modules = import.meta.glob('@/layouts/*.tsx');
-export const page_modules = import.meta.glob('@/page/**/*.tsx');
+export const page_modules = import.meta.glob('@/pages/**/*.tsx');
 export const modules = {...layout_modules,...page_modules}
 
 export const pathToLazyComponent  =  (filePaht: string,spin?: boolean) => {
