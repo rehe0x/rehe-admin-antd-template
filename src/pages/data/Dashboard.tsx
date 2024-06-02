@@ -1,5 +1,5 @@
 import React,{} from 'react';
-import { Space } from 'antd';
+import { Space,Layout } from 'antd';
 import Bar from "@/pages/data/Bar";
 import Bar2 from "@/pages/data/Bar2";
 
@@ -8,6 +8,7 @@ import Pie from "@/pages/data/Pie";
 
 const App = ()=> {
   return(
+    <Layout className='page-layout' >
       <Space wrap size='large'>
           <Bar />
           <Line />
@@ -23,6 +24,7 @@ const App = ()=> {
           <Line />
           <Pie />
         </Space>
+        </Layout>
   )
 }
 

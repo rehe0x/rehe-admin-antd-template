@@ -6,6 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { useTable } from '@/hooks/UseTable'
 import Query from '@/pages/main/user/Query'
 import { UserService } from "./service";
+import { CollectionCreateFormModal } from "@/pages/main/user/Add";
 
 const items = [
   {
@@ -84,9 +85,11 @@ const App = () => {
     },
   ];
 
+  const [openAdd, setOpenAdd] = useState(false);
 
   const{ tableProps,refresh,search }= useTable(UserService.getUserList)
 
+  
   return (
     <Layout className='page-layout' >
       <Breadcrumb />
@@ -95,10 +98,14 @@ const App = () => {
         <Query search={search} />
       </Layout.Content>
 
+      {/* <Layout.Content className='layout-content'>
+        <Query search={search} />
+      </Layout.Content> */}
+
       <Layout.Content className='layout-content' >
         <div className='layout-title'>
           <Space size="small">
-            <Button type="primary" htmlType="submit">新增</Button>
+            <Button type="primary" onClick={() => setOpenAdd(true)}>新增</Button>
             <Button onClick={() => { form.resetFields(); }}>编辑</Button>
           </Space>
           <Space size="middle">
@@ -114,8 +121,13 @@ const App = () => {
             </Dropdown>
           </Space>
         </div>
+
         <Table columns={columns} {...tableProps}/>
       </Layout.Content>
+      <CollectionCreateFormModal
+        open={openAdd}
+        setOpenAdd={setOpenAdd}
+      />
     </Layout>
   );
 };

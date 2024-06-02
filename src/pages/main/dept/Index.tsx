@@ -1,6 +1,6 @@
 import React from 'react';
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
-import { Layout, Menu, theme, Space, Button, Dropdown, Spin,ConfigProvider, } from 'antd';
+import { Layout, Menu, theme, Space, Button, Dropdown, Spin, ConfigProvider, } from 'antd';
 import { DownOutlined, AlignLeftOutlined, BarChartOutlined } from '@ant-design/icons';
 
 import Table from '@/page/main/user/Table'
@@ -29,20 +29,13 @@ const App = () => {
 
   return (
     <>
-      <Layout className='home-layout'>
+      <Layout className='page-layout' >
         <Breadcrumb />
 
-    <Spin tip="Loading..." spinning={false}>
-    
-        <Layout.Content
-          className='layout-content layout-content-margin-bottom'
-        >
-         角色管理
+        <Layout.Content className='layout-content'>
+          部门管理
         </Layout.Content>
 
-        
-
-    </Spin>
       </Layout>
     </>
   );

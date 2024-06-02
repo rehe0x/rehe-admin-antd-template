@@ -69,7 +69,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       parentId: 6,
       type: 1,
       title: '角色管理',
-      component: '/pages/main/role/List',
+      component: '/pages/main/role/Index',
       routePath: 'role',
     },
     {
@@ -77,7 +77,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       parentId: 6,
       type: 1,
       title: '部门管理',
-      component: '/pages/main/dept/List',
+      component: '/pages/main/dept/Index',
       routePath: 'dept',
     },
 
@@ -314,7 +314,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       parentId: 6,
       type: 1,
       title: '角色管理',
-      component: '/pages/main/role/List',
+      component: '/pages/main/role/Index',
       routePath: 'role',
     },
     {
@@ -322,7 +322,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       parentId: 6,
       type: 1,
       title: '部门管理',
-      component: '/pages/main/dept/List',
+      component: '/pages/main/dept/Index',
       routePath: 'dept',
     },
 
@@ -559,7 +559,7 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
       parentId: 6,
       type: 1,
       title: '角色管理',
-      component: '/pages/main/role/List',
+      component: '/pages/main/role/Index',
       routePath: 'role',
     },
     {
@@ -567,7 +567,7 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
       parentId: 6,
       type: 1,
       title: '部门管理',
-      component: '/pages/main/dept/List',
+      component: '/pages/main/dept/Index',
       routePath: 'dept',
     },
 

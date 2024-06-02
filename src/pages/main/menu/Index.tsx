@@ -4,9 +4,10 @@ import {  AlignLeftOutlined, BarChartOutlined } from '@ant-design/icons';
 
 import Breadcrumb from "@/components/Breadcrumb";
 import { useTable } from '@/hooks/UseTable'
-import Query from '@/pages/main/user/Query'
-import { UserService } from "@/pages/main/user/service";
-import { CollectionCreateFormModal } from "@/pages/main/user/Add";
+import Query from '@/pages/main/menu/Query'
+import Add from '@/pages/main/menu/Add'
+
+import { UserService } from "./service";
 
 const items = [
   {
@@ -85,27 +86,25 @@ const App = () => {
     },
   ];
 
-  const [openAdd, setOpenAdd] = useState(false);
 
   const{ tableProps,refresh,search }= useTable(UserService.getUserList)
 
-  
   return (
     <Layout className='page-layout' >
       <Breadcrumb />
       
       <Layout.Content className='layout-content'>
-        <Query search={search} />
+        <Add search={search} />
       </Layout.Content>
 
-      {/* <Layout.Content className='layout-content'>
+      <Layout.Content className='layout-content'>
         <Query search={search} />
-      </Layout.Content> */}
+      </Layout.Content>
 
       <Layout.Content className='layout-content' >
         <div className='layout-title'>
           <Space size="small">
-            <Button type="primary" onClick={() => setOpenAdd(true)}>新增</Button>
+            <Button type="primary" htmlType="submit">新增</Button>
             <Button onClick={() => { form.resetFields(); }}>编辑</Button>
           </Space>
           <Space size="middle">
@@ -124,10 +123,6 @@ const App = () => {
 
         <Table columns={columns} {...tableProps}/>
       </Layout.Content>
-      <CollectionCreateFormModal
-        open={openAdd}
-        setOpenAdd={setOpenAdd}
-      />
     </Layout>
   );
 };

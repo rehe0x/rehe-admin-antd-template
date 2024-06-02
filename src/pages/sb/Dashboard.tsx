@@ -90,7 +90,7 @@ const App: React.FC = () => {
 
   return (
     <div style={{
-      paddingTop: '65px',
+      paddingTop: '30px',
       paddingInline: '20px'
     }}>
       <Table

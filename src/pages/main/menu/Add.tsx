@@ -36,7 +36,7 @@ const App = (props) => {
 
           <Space size="small">
             <Button type="primary" htmlType="submit">
-              查询
+              添加
             </Button>
             <Button
              onClick={() => {

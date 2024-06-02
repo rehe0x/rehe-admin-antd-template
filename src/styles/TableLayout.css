@@ -3,7 +3,7 @@
   min-width: 800px;
 }
 .page-layout .layout-content{
-  padding: 24px;
+  padding: 24px 24px 24px 24px;
   margin: 20px 0px 0px;
   flex: 0 0 auto;
   background: var(--ant-color-bg-container);

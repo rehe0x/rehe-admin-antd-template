@@ -1,7 +1,6 @@
+import React, { useState, useEffect } from 'react';
 import { Button, Col, Form, Input, Row, Select, Space, theme, Radio, Grid } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
-import React, { useState, useEffect } from 'react';
-import { count } from 'console';
 const { useBreakpoint } = Grid;
 
 const size = {
@@ -34,7 +33,7 @@ export const QueryForm = (props) => {
             setExpand(!expand);
           }}
           >
-          <DownOutlined /> 展开
+          <DownOutlined rotate={expand ? 180 : 0}/> {expand ? '折叠' : '展开'}
           </a>:''
         } 
        
