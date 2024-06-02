@@ -1,33 +1,49 @@
-# React + TypeScript + Vite + Antd5
+# vite5 + React18 + antd-design5 简约风后台管理模版
 
-# Demo 持续完善
+## 🎉 特性
+- 💪 所有数据通过mock模拟请求
+- 🌍 多形态菜单布局，动态切换
+- 💅 动态路由、菜单、登录token等
+- 👏 暗黑主题切换，布局大小调整，持久化
+- 👏 过度动画，提高用户体验
+- 🥳 尽量简洁不臃肿，减少使用第三方lib
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🎉 持续完善中
 
-Currently, two official plugins are available:
+![image](src/assets/WX20240602-155255@2x.png)
+![image](src/assets/WX20240602-154933@2x.png)
+![image](src/assets/WX20240602-155006@2x.png)
+![image](src/assets/WX20240602-155024@2x.png)
+![image](src/assets/WX20240602-155116@2x.png)
+![image](src/assets/WX20240602-155157@2x.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## 安装使用
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+git https://github.com/rehe0x/rehe-admin-antd-template.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# rehe-admin-antd-template
+
+```bash
+cd rehe-admin-antd-template
+
+yarn install
+
+```
+
+- 运行
+
+```bash
+yarn run dev
+```
+
+- 打包
+
+```bash
+yarn run build:dev
+```
+
+
+
+
