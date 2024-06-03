@@ -15,18 +15,32 @@ const App = () => {
   const { layoutMode } = useApp()
   const location = useLocation();
   const [loading, setLoading] = useState(true)
+
+
   const [topMenuItem, setTopMenuItem] = useState([])
-  const [permissions, setPermissions] = useState([])
+  
+  const [userInfo, setUserInfo] = useState({
+    permissions: [],
+    username: ''
+  })
  // 获取菜单
   useLayoutEffect(() => {
     (async () => {
       let menuList = []
+
+      let user = {}
       if (layoutMode == 1) {
-        menuList = await request.get('/api/user/getMenu');
+        const {data:{menus,username}} = await request.get('/api/user/getMenu');
+        menuList = menus
+        user['username'] = username
       } else if(layoutMode == 2){
-        menuList = await request.get('/api/user/getMenuTop');
+        const {data:{menus,username}}  = await request.get('/api/user/getMenuTop');
+        menuList = menus
+        user['username'] = username
       } else {
-        menuList = await request.get('/api/user/getMenuLeft');
+        const {data:{menus,username}}  = await request.get('/api/user/getMenuLeft');
+        menuList = menus
+        user['username'] = username
       }
       // 生成菜单及路由
       const { topMenuTree, routeTree,  menuTree, permissions} = menuArrayToTreeMap(menuList);
@@ -46,7 +60,11 @@ const App = () => {
       // setTimeout(() => {
         // 设置顶部菜单
         setTopMenuItem(topMenuTree)
-        setPermissions(permissions)
+        setUserInfo({
+          permissions: permissions,
+          ...user
+        })
+       
         setLoading(false)
         // 适当延迟过度效果
       // }, 0);
@@ -55,9 +73,7 @@ const App = () => {
 
   return (
     <AuthContext.Provider
-      value={{
-        permissions: permissions
-      }}
+      value={{...userInfo}}
     >
       <Layout>
         <BaseHeader topMenuItem={topMenuItem} />

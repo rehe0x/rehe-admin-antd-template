@@ -254,7 +254,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       routePath: 'page33',
     }
   ]
-  return menuList
+  return {data: {menus: menuList,username:'潘西热河'},}
 }, { delay:500 })
 
 
@@ -499,7 +499,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       routePath: 'page33',
     }
   ]
-  return menuList
+  return {data: {menus: menuList,username:'潘西热河'},}
 }, { delay:500 })
 
 
@@ -744,7 +744,7 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
     //   routePath: 'page33',
     // }
   ]
-  return menuList
+  return {data: {menus: menuList,username:'潘西热河'},}
 }, { delay:500 })
 
 

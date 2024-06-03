@@ -1,5 +1,6 @@
 import qs from 'qs';
 import { message } from 'antd';
+import storage from "@/common/storage";
 
 const { stringify, parse } = qs;
 
@@ -50,14 +51,14 @@ class http {
    * @returns {Promise<unknown>}
    */
   static async bashFetch(url = '', options = {}) {
-
+    const token = storage.getStorage('token')
     const defaultOptions = {
       /*允许携带cookies*/
       credentials: 'include',
       /*允许跨域**/
       mode: 'cors',
       headers: {
-        token: null,
+        token: token,
         Authorization: null,
         // 当请求方法是POST，如果不指定content-type是其他类型的话，默认为如下，要求参数传递样式为 key1=value1&key2=value2，但实际场景以json为多
         // 'content-type': 'application/x-www-form-urlencoded',

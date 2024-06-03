@@ -43,7 +43,7 @@ const App = (props) => {
               form.resetFields();
             }}
             >
-              重制
+              重置
             </Button>
           </Space>
       </QueryForm>
@@ -58,7 +58,7 @@ const App = (props) => {
               form.resetFields();
             }}
           >
-            重制
+            重置
           </Button>
          
         </Space>

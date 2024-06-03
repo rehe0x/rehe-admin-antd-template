@@ -26,7 +26,8 @@ import { createContext,useContext }  from 'react';
 // }
 
 export const AuthContext = createContext({
-  permissions:[]
+  permissions:[],
+  username:''
 })
 // 更改Context名称
 

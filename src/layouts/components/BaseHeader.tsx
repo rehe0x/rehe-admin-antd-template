@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate, useMatches } from "react-router-dom";
 import { Layout, Menu, Space, Dropdown, ConfigProvider, message, Avatar, Badge } from 'antd';
 import { DownOutlined, SunOutlined, MoonOutlined } from '@ant-design/icons';
-
+import { useAuth } from "@/stores/AuthContext";
 import { useApp } from "@/stores/AppContext";
 import NProgress from '@/components/NProgress';
 import { BaseHeaderSkeleton } from "@/layouts/components/Skeleton";
@@ -63,11 +63,23 @@ const layoutItems = [
   },
 ];
 
+
+
+NProgress.start();
+window.setTimeout(() => {
+  NProgress.done();
+}, 500);
+
+const App = (props) => {
+  const { username } = useAuth()
+  const { setTheme,setLayoutMode } = useApp();
+
+
 const centerItems = [
   {
     key: '2',
     type: 'group',
-    label: '潘西热河@你好',
+    label: username+'@你好',
     children: [
       {
         key: '1',
@@ -89,14 +101,6 @@ const centerItems = [
   },
 ];
 
-
-NProgress.start();
-window.setTimeout(() => {
-  NProgress.done();
-}, 500);
-
-const App = (props) => {
-  const { setTheme,setLayoutMode } = useApp();
   // 修改 context 中的值
   const themeClick = (e) => {
     setTheme(e.key)
@@ -118,13 +122,6 @@ const App = (props) => {
   // 顶部路由跳转
   const navigate = useNavigate()
   const routerClick = (item, key, keyPath, domEvent ) => {
-    console.log('=======')
-    console.log(item)
-    console.log(key)
-
-    console.log(keyPath)
-
-
     NProgress.start();
     window.setTimeout(() => {
       NProgress.done();
@@ -230,7 +227,7 @@ const App = (props) => {
                     Lucy
                   </Avatar>
                 </Badge>
-                潘西热河
+                {username}
                 <DownOutlined />
               </Space>
             </a>
