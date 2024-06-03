@@ -1,7 +1,7 @@
 import React, { useState ,useEffect} from 'react';
 import { Layout,  Space, Button, Dropdown, Table,Tag} from 'antd';
 import {  AlignLeftOutlined, BarChartOutlined } from '@ant-design/icons';
-
+import { Permission } from "@/components/Permission";
 import Breadcrumb from "@/components/Breadcrumb";
 import { useTable } from '@/hooks/UseTable'
 import Query from '@/pages/main/user/Query'
@@ -105,7 +105,9 @@ const App = () => {
       <Layout.Content className='layout-content' >
         <div className='layout-title'>
           <Space size="small">
+          <Permission code={['user:add']}>
             <Button type="primary" onClick={() => setOpenAdd(true)}>新增</Button>
+          </Permission>
             <Button onClick={() => { form.resetFields(); }}>编辑</Button>
           </Space>
           <Space size="middle">

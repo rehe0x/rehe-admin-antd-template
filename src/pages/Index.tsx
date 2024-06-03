@@ -7,6 +7,7 @@ import { router } from "@/router/index";
 import { menuArrayToTreeMap } from "@/router/generate";
 import request from "@/common/request";
 import { useApp } from "@/stores/AppContext";
+import { AuthContext } from "@/stores/AuthContext";
 
 import('@/styles/TableLayout.css')
 // 获取菜单创建路由
@@ -15,10 +16,10 @@ const App = () => {
   const location = useLocation();
   const [loading, setLoading] = useState(true)
   const [topMenuItem, setTopMenuItem] = useState([])
+  const [permissions, setPermissions] = useState([])
  // 获取菜单
   useLayoutEffect(() => {
     (async () => {
-     
       let menuList = []
       if (layoutMode == 1) {
         menuList = await request.get('/api/user/getMenu');
@@ -28,12 +29,16 @@ const App = () => {
         menuList = await request.get('/api/user/getMenuLeft');
       }
       // 生成菜单及路由
-      const { topMenuTree, routeTree,  menuTree} = menuArrayToTreeMap(menuList);
+      const { topMenuTree, routeTree,  menuTree, permissions} = menuArrayToTreeMap(menuList);
       console.log('routeTree')
       console.log(routeTree)
 
       console.log('menuTree')
       console.log(menuTree)
+
+      console.log('permissions')
+      console.log(permissions)
+      
       // 填充动态啊路由
       router.routes[0].children = routeTree
       // 跳转对应路由
@@ -41,6 +46,7 @@ const App = () => {
       // setTimeout(() => {
         // 设置顶部菜单
         setTopMenuItem(topMenuTree)
+        setPermissions(permissions)
         setLoading(false)
         // 适当延迟过度效果
       // }, 0);
@@ -48,14 +54,20 @@ const App = () => {
   }, [layoutMode])
 
   return (
-    <Layout>
-      <BaseHeader topMenuItem={topMenuItem} />
-      <BashIndexSkeleton loading={loading}>
-        <div style={{marginTop: '55px'}}>
-          <Outlet />
-        </div>
-      </BashIndexSkeleton>
-    </Layout>
+    <AuthContext.Provider
+      value={{
+        permissions: permissions
+      }}
+    >
+      <Layout>
+        <BaseHeader topMenuItem={topMenuItem} />
+        <BashIndexSkeleton loading={loading}>
+          <div style={{marginTop: '55px'}}>
+            <Outlet />
+          </div>
+        </BashIndexSkeleton>
+      </Layout>
+    </AuthContext.Provider>
   );
 };
 export default App;

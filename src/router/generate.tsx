@@ -74,7 +74,7 @@ function menuToRouteObject(menu, children) {
 }
 
 
-// 后台扁平化菜单生成树菜单和路由
+// 后台扁平化菜单生成树菜单和路由和权限
 export function menuArrayToTreeMap(menus) {
   const map = new Map(menus.map((node) => [node.id, {
     ...node,
@@ -87,6 +87,7 @@ export function menuArrayToTreeMap(menus) {
     parentTitle: []
   }]));
 
+  const permissions = [];
   const menuTree = [];
   const routesMap = new Map();
 
@@ -105,10 +106,12 @@ export function menuArrayToTreeMap(menus) {
          node.parentPaths = [...parent.parentPaths,parent.key]
          node.parentTitle = [...parent.parentTitle,parent.label]
       }
-  
     }
-   
-
+   console.log(node.permission)
+    // 权限
+    if(node.permission){
+      permissions.push(node.permission)
+    }
     // 生成路由 最多两级（目录不生成路由）
     // 一级菜单如果是目录下面的所有子菜单路由会放在一级 路由地址不需要特殊处理
     // 一级菜单 “/” 路由需要转换为 “/*” 下面的子路由需要加上 “/*”前缀 如 /*/system/user 
@@ -147,5 +150,5 @@ export function menuArrayToTreeMap(menus) {
     children: element.type === 0 ? element.children : null,
   }));
 
-  return { topMenuTree, menuTree, routeTree: Array.from(routesMap.values()) };
+  return { topMenuTree, menuTree, routeTree: Array.from(routesMap.values()),permissions };
 }

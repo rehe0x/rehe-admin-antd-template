@@ -10,6 +10,18 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
   console.log('Query params:', queryParams);
 
   const menuList = [
+    
+    {
+      id: 122222,
+      parentId: 0,
+      type: 2,
+      title: null,
+      component: null,
+      routePath: null,
+      icon: '',
+      permission: 'user:add'
+    },
+
     {
       id: 1,
       parentId: 0,
