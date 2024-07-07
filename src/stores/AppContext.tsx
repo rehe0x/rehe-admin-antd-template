@@ -1,9 +1,19 @@
 import { createContext,useContext }  from 'react';
 
-export const AppContext = createContext({
+type AppContextType = {
+  theme?: string;
+  componentSize?: string;
+  setTheme: (theme: string) => void;
+  layoutMode: number | undefined;
+  setLayoutMode: (mode: string) => void;
+};
+
+export const AppContext = createContext<AppContextType>({
   theme: '',
   componentSize: '',
-  // setTheme: (a:object,b:string) => {console.log(a,b);return;}
+  setTheme: () => {},
+  layoutMode: undefined,
+  setLayoutMode: () => {},
 });
 
 export const useApp = () => {
@@ -13,4 +23,3 @@ export const useApp = () => {
   }
   return context;
 };
-

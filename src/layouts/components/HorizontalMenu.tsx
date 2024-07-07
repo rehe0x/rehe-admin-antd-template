@@ -5,7 +5,7 @@ import { ConfigProvider } from 'antd';
 import NProgress from '@/components/NProgress';
 import { Menu } from 'antd';
 
-const App: React.FC = (props) => {
+const App: React.FC<{menus:any[]}> = (props) => {
   const navigate = useNavigate()
   const routerClick: MenuProps['onClick'] = (e) => {
     NProgress.start();
@@ -16,9 +16,7 @@ const App: React.FC = (props) => {
   };
 
   // 默认选中菜单
-  const matches = useMatches();
-  const { data,pathname } = matches.at(-1)
-
+  const pathname:string = useMatches().at(-1)?.pathname as string
   return (
     <ConfigProvider
       theme={{
@@ -35,10 +33,8 @@ const App: React.FC = (props) => {
     >
       <Menu style={{
         lineHeight: '32px',
-        // flex: 1,
         minWidth: 0,
         borderBottom: 0,
-        // fontWeight: 'bold'
       }}
         onClick={routerClick} selectedKeys={[pathname]} mode="horizontal" items={props.menus} />
     </ConfigProvider>

@@ -2,12 +2,10 @@ import React, { } from 'react';
 import { Outlet, useMatches } from "react-router-dom"
 import HorizontalMenu from "@/layouts/components/HorizontalMenu";
 
-const App = () => {
+const App:React.FC = () => {
   const matches = useMatches();
-  console.log('matches=====')
-
-  console.log(matches)
-  const { data } = matches.at(-2)
+  const data = (matches.length >= 2 ? matches[matches.length - 2].data : null) as any;
+  const menus  = data && data.menus ? data.menus : [];
   return (
     <div style={{}}>
       <div className='' style={{
@@ -17,7 +15,7 @@ const App = () => {
         background: 'var(--ant-header-bg)',
         paddingInline: '16px'
       }}>
-        <HorizontalMenu menus={data ? data.menus : []} />
+        <HorizontalMenu menus={menus} />
       </div>
       <Outlet />
     </div>

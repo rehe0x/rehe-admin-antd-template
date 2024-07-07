@@ -28,11 +28,10 @@ interface TableProps<T> {
 interface UseTableResult<T> {
   tableProps: TableProps<T>;
   refresh: () => void;
-  query: (formData: Record<string, any>) => void;
+  search: (formData: Record<string, any>) => void;
 }
 
-export const useTable = <T,>(
-  fun: (params: { pageSize: number; pageNum: number }, formData: Record<string, any>) => Promise<{ data: T[]; total: number }>)
+export const useTable = <T,>(fun: (params: { pageSize: number; pageNum: number }, formData: Record<string, any>) => Promise<{ data: T[]; total: number }>)
 : UseTableResult<T> => {
   const [data, setData] = useState<TableData<T>>({
     loading: false,
@@ -84,7 +83,7 @@ export const useTable = <T,>(
     }
   };
 
-  const query = (formData: Record<string, any>) => {
+  const search = (formData: Record<string, any>) => {
     load({ pageNum: 1 }, formData);
   };
 
@@ -92,5 +91,5 @@ export const useTable = <T,>(
     load();
   };
 
-  return { tableProps, refresh, query };
+  return { tableProps, refresh, search };
 };

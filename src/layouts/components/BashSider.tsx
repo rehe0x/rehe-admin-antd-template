@@ -6,35 +6,32 @@ import NProgress from '@/components/NProgress';
 import { BashSiderSkeleton } from "@/layouts/components/Skeleton";
 import storage from "@/common/storage";
 
-// 顶部加载条
-const App = (props) => {
+const App:React.FC<{menus:any[]}> = (props) => {
   // 菜单展开/收缩
-  const ca = storage.getStorage('collapsed')
-  const [collapsed, setCollapsed] = useState(ca?.collapsed);
+  const ca:{collapsed:boolean} = storage.getStorage('collapsed') as any
+  const [collapsed, setCollapsed] = useState(ca.collapsed);
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
     storage.setStorage('collapsed',JSON.stringify({collapsed: !collapsed}))
   };
 
-  // 加载站位 适当延时
+  // 加载
   const [loading, setLoading] = useState(false)
   // setTimeout(() => {
   //   setLoading(false)
-  // }, 400);
+  // }, 100);
 
-
+  // 路由跳转
   const navigate = useNavigate();
-  const onClick = async (item, key, keyPath, domEvent) => {
+  const toRoute = async (item) => {
     NProgress.start();
     window.setTimeout(() => {
       NProgress.done();
     }, 350);
     navigate(`${item.key}`);
   }
-
   // 默认选中菜单
-  const matches = useMatches();
-  const { data,pathname } = matches.at(-1)
+  const { data,pathname } = useMatches().at(-1) as any
   return (
     <>
       <Layout.Sider collapsed={collapsed} breakpoint='xl' collapsedWidth={80}></Layout.Sider>
@@ -57,16 +54,14 @@ const App = (props) => {
               mode="inline"
               forceSubMenuRender={true}
               defaultOpenKeys={data.parentPaths}
-              // openKeys={data.parentPaths}
               defaultSelectedKeys={pathname}
-              // selectedKeys={pathname}
               style={{
                 height: '100%',
                 borderRight: 0,
                 fontWeight: '500'
               }}
               items={props.menus}
-              onClick={onClick}
+              onClick={toRoute}
             />
           </BashSiderSkeleton>
 

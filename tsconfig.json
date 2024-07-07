@@ -14,6 +14,9 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    "allowJs": true, // 允许编译 JavaScript 文件
+    "checkJs": true, // 检查 JavaScript 文件中的类型
+
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,

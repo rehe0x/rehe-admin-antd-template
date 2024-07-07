@@ -1,6 +1,10 @@
 import { ConfigProvider, Skeleton } from 'antd';
+import React from 'react';
 
-export const BashSiderSkeleton = (props) => {
+export const BashSiderSkeleton:React.FC<{
+  loading:boolean;
+  children?:any
+}> = (props) => {
   return (
     <ConfigProvider
       theme={{
@@ -34,7 +38,12 @@ export const BashSiderSkeleton = (props) => {
 
 
 
-export const BaseHeaderSkeleton = (props) => {
+export const BaseHeaderSkeleton:React.FC<{
+  loading:boolean;
+  num?:number;
+  style?:any;
+  children?:any
+}>  = (props) => {
   if (props.loading) {
     const numbers = Array.from({ length: props.num ? props.num : 3}, (_, i) => i + 1); 
 
@@ -53,7 +62,10 @@ export const BaseHeaderSkeleton = (props) => {
   }
 }
 
-export const BashIndexSkeleton = (props) => {
+export const BashIndexSkeleton:React.FC<{
+  loading:boolean
+  children?:any
+}> = (props) => {
   return (
     <ConfigProvider
       theme={{

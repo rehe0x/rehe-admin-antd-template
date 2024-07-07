@@ -95,7 +95,7 @@ export const hasStorage = (key: string) => {
 // 获取所有key
 export const getStorageKeys = () => {
   const items = getStorageAll();
-  const keys = [];
+  const keys:string[] = [];
   for (let index = 0; index < items.length; index++) {
     keys.push(items[index].key);
   }
@@ -115,7 +115,7 @@ export const getStorageLength = () => {
 // 获取全部 getAllStorage
 export const getStorageAll = () => {
   const len = getStorageLength(); // 获取长度
-  const arr = []; // 定义数据集
+  const arr: Array<{ key: string; val: any }> = []; // 定义数据集
   for (let i = 0; i < len; i++) {
     const key = window[config.type].key(i);
     // 获取key 索引从0开始

@@ -1,13 +1,6 @@
 import { theme } from 'antd';
 import { MapToken } from 'antd/es/theme/interface/index';
 import { SeedToken } from 'antd/es/theme/internal';
-// import type { MappingAlgorithm } from 'antd/es/config-provider/context';
-
-
-// colorBgLayout: '#20252b', // Layout 背景色
-// colorBgContainer: '#282c34', // 组件容器背景色 
-// colorBgElevated: '#32363e', // 悬浮容器背景色
-
 
 // 暗黑算法
 const CustomDarkAlgorithm = (seedToken: SeedToken, mapToken: MapToken | undefined) => {

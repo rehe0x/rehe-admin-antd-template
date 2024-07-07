@@ -8,7 +8,7 @@ import NProgress from '@/components/NProgress';
 import { BaseHeaderSkeleton } from "@/layouts/components/Skeleton";
 import './BaseHeader.css'
 
-const themeItems = [
+const themeItems:any = [
   {
     key: '1',
     type: 'group',
@@ -45,9 +45,6 @@ const themeItems = [
   },
 ];
 
-
-
-
 const layoutItems = [
   {
     key: '1',
@@ -63,23 +60,11 @@ const layoutItems = [
   },
 ];
 
-
-
-NProgress.start();
-window.setTimeout(() => {
-  NProgress.done();
-}, 500);
-
-const App = (props) => {
-  const { username } = useAuth()
-  const { setTheme,setLayoutMode } = useApp();
-
-
-const centerItems = [
+const centerItems:any = [
   {
     key: '2',
     type: 'group',
-    label: username+'@你好',
+    label: '@你好',
     children: [
       {
         key: '1',
@@ -101,6 +86,19 @@ const centerItems = [
   },
 ];
 
+
+NProgress.start();
+window.setTimeout(() => {
+  NProgress.done();
+}, 500);
+
+
+const App:React.FC<{
+  topMenuItem:any[]
+}> = (props) => {
+  const { username } = useAuth()
+  const { setTheme,setLayoutMode } = useApp();
+
   // 修改 context 中的值
   const themeClick = (e) => {
     setTheme(e.key)
@@ -121,17 +119,15 @@ const centerItems = [
 
   // 顶部路由跳转
   const navigate = useNavigate()
-  const routerClick = (item, key, keyPath, domEvent ) => {
+  const toRoute = (item) => {
     NProgress.start();
     window.setTimeout(() => {
       NProgress.done();
     }, 350);
     navigate(item.keyPath[0])
   }
-  const matches = useMatches();
 
-  const { data, pathname } = matches.at(-1)
-
+  const { data, pathname } = useMatches().at(-1) as any
   return (
     <Layout.Header
       style={{
@@ -179,7 +175,7 @@ const centerItems = [
               borderBottom: 0,
               fontWeight: 'bold'
             }}
-            onClick={routerClick}
+            onClick={toRoute}
           />
         </BaseHeaderSkeleton>
       </ConfigProvider>
@@ -193,7 +189,7 @@ const centerItems = [
 
         <Space size="large">
         
-          <Dropdown className="header-select" menu={{ items: themeItems, onClick: themeClick }} placement="bottom" arrow={{ pointAtCenter: true }}>
+          <Dropdown className="header-select" menu={{ items: themeItems , onClick: themeClick }} placement="bottom" arrow={{ pointAtCenter: true }}>
             <a style={{ fontSize: '18px' }} onClick={(e) => e.preventDefault()}>
               <MoonOutlined />
             </a>

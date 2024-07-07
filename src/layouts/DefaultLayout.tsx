@@ -3,12 +3,13 @@ import { Outlet , useMatches} from "react-router-dom"
 import { Layout } from 'antd';
 import BashSider from "@/layouts/components/BashSider";
 
-const App = () => {
+const App:React.FC = () => {
   const matches = useMatches();
-  const { data } = matches.at(-2)
+  const data = (matches.length >= 2 ? matches[matches.length - 2].data : null) as any;
+  const menus  = data && data.menus ? data.menus : [];
   return (
     <Layout style={{}} hasSider={true}>
-      <BashSider menus={data ? data.menus : []}/>
+      <BashSider menus={menus}/>
       <Outlet />
     </Layout>
   );

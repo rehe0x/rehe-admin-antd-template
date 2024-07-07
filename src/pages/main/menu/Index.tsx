@@ -80,25 +80,25 @@ const App = () => {
       render: (_, record) => (
         <Space size="middle">
           <a onClick={() => refresh()}>编辑</a>
-          <a onClick={() => search({cehis:'123123',sd:'ff'})}>删除</a>
+          <a onClick={() => query({cehis:'123123',sd:'ff'})}>删除</a>
         </Space>
       ),
     },
   ];
 
 
-  const{ tableProps,refresh,search }= useTable(UserService.getUserList)
+  const{ tableProps,refresh,query }= useTable(UserService.getUserList)
 
   return (
     <Layout className='page-layout' >
       <Breadcrumb />
       
       <Layout.Content className='layout-content'>
-        <Add search={search} />
+        <Add search={query} />
       </Layout.Content>
 
       <Layout.Content className='layout-content'>
-        <Query search={search} />
+        <Query search={query} />
       </Layout.Content>
 
       <Layout.Content className='layout-content' >
