@@ -9,7 +9,7 @@ import storage from "@/common/storage";
 const App:React.FC<{menus:any[]}> = (props) => {
   // 菜单展开/收缩
   const ca:{collapsed:boolean} = storage.getStorage('collapsed') as any
-  const [collapsed, setCollapsed] = useState(ca.collapsed);
+  const [collapsed, setCollapsed] = useState(ca?.collapsed);
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
     storage.setStorage('collapsed',JSON.stringify({collapsed: !collapsed}))
