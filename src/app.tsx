@@ -16,7 +16,6 @@ export const App = () => {
   const [themeState, dispatch] = useReducer(themeReducer, getInitialThemeState());
   // 布局切换
   const [layoutMode, setLayoutModeState] = useState(getInitialLayoutMode());
-const sf=null;
   return (
     <AppContext.Provider
       value={{
