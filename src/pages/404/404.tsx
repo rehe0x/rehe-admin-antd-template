@@ -1,8 +1,12 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { Button, Result } from 'antd';
-const App = () => (
-  <div style={{
-    marginTop: '55px'
+import { useNavigate,useMatches } from "react-router-dom";
+
+const App = () => {
+  
+  return(
+   <div style={{
+    // marginTop: '55px'
   }}>
   <Result
     status="404"
@@ -11,5 +15,5 @@ const App = () => (
     extra={<Button type="primary">返回</Button>}
   />
    </div>
-);
+)};
 export default App;

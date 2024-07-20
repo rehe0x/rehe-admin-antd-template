@@ -37,8 +37,8 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       parentId: 0,
       menuType: 1,
       title: '404',
-      component: '/pages/404',
-      routePath: '/*',
+      component: '/pages/404/navigate',
+      routePath: '*',
       hidden: 1
     },
 
@@ -159,16 +159,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       routePath: '',
     },
 
-    {
-      id: 40130,
-      parentId: 2,
-      menuType: 1,
-      title: '404',
-      component: '/pages/404',
-      routePath: '*',
-      hidden: 1
-    },
-
+   
     {
       id: 4000,
       parentId: 2,
