@@ -31,7 +31,7 @@ const App:React.FC<{menus:any[]}> = (props) => {
     navigate(`${item.key}`);
   }
   // 默认选中菜单
-  const { data,pathname } = useMatches().at(-1) as any
+  const { data : {parentPaths}, pathname  } = useMatches().at(-1) as any
   return (
     <>
       <Layout.Sider collapsed={collapsed} breakpoint='xl' collapsedWidth={80}></Layout.Sider>
@@ -53,8 +53,10 @@ const App:React.FC<{menus:any[]}> = (props) => {
             <Menu
               mode="inline"
               forceSubMenuRender={true}
-              defaultOpenKeys={data.parentPaths}
-              defaultSelectedKeys={pathname}
+              defaultOpenKeys={parentPaths}
+              // openKeys={data.parentPaths}
+              selectedKeys={[parentPaths.at(-1) === '/' ? '' : parentPaths.at(-1)]}
+              // defaultSelectedKeys={pathname}
               style={{
                 height: '100%',
                 borderRight: 0,

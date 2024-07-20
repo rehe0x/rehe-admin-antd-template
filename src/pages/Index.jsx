@@ -38,7 +38,7 @@ const App = () => {
       const {data:{username}}  = await request.get('/api/user/info');
 
       // 生成菜单及路由
-      const { topMenuTree, routeTree,  menuTree, permissions} = menuArrayToTreeMap(data);
+      const { topMenuTree, routeTree, permissions} = menuArrayToTreeMap(data);
 
       // 设置顶部菜单
       // @ts-ignore

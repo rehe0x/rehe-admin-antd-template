@@ -166,7 +166,7 @@ const App:React.FC<{
           }} >
           <Menu
             mode="horizontal"
-            defaultSelectedKeys={[data?.parentPaths ? data?.parentPaths![0] : null, pathname]}
+            defaultSelectedKeys={[data?.parentPaths ? data?.parentPaths![0] : null, pathname === '/' ? '':pathname]}
             items={props.topMenuItem && props.topMenuItem.length > 1 ? props.topMenuItem : []}
             style={{
               lineHeight: '36px',

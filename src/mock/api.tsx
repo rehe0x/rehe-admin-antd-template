@@ -28,7 +28,7 @@ fetchMock.get('/api/user/getMenu', (url, opts) => {
       menuType: 1,
       title: '/',
       component: '/layouts/DefaultLayout',
-      routePath: '/',
+      routePath: '',
       icon: ''
     },
 
@@ -273,20 +273,11 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       menuType: 0,
       title: '首页',
       component: null,
-      routePath: '/',
+      routePath: '',
       icon: ''
     },
 
-    {
-      id: 401302,
-      parentId: 0,
-      menuType: 1,
-      title: '404',
-      component: '/pages/404',
-      routePath: '/*',
-      hidden: 1
-    },
-
+    
     {
       id: 5,
       parentId: 1,
@@ -404,15 +395,7 @@ fetchMock.get('/api/user/getMenuTop', (url, opts) => {
       routePath: '',
     },
 
-    {
-      id: 40130,
-      parentId: 2,
-      menuType: 1,
-      title: '404',
-      component: '/pages/404',
-      routePath: '*',
-      hidden: 1
-    },
+   
 
     {
       id: 4000,
@@ -518,19 +501,10 @@ fetchMock.get('/api/user/getMenuLeft', (url, opts) => {
       menuType: 1,
       title: '首页',
       component: '/layouts/DefaultLayout',
-      routePath: '/',
+      routePath: '',
       icon: ''
     },
 
-    {
-      id: 401302,
-      parentId: 0,
-      menuType: 1,
-      title: '404',
-      component: '/pages/404',
-      routePath: '/*',
-      hidden: 1
-    },
 
     {
       id: 5,
